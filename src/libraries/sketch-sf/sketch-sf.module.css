@@ -1,0 +1,369 @@
+/* Excalidraw hand-drawn × semantic light/dark surfaces (column uses Inter → SF Pro on Apple via --iso-sans). */
+.root {
+  --ink: var(--iso-text);
+  --paper: var(--iso-paper);
+  --line: var(--iso-border-strong);
+  --accent: var(--iso-emerald-600);
+  --accent-shadow: var(--iso-emerald-800);
+  --accent-soft: var(--iso-emerald-soft);
+  --brand: var(--iso-rose-500);
+  --brand-soft: var(--iso-rose-soft);
+  font-family: var(--iso-sans);
+  color: var(--ink);
+}
+
+.button {
+  font-family: var(--iso-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid var(--line);
+  background: var(--iso-elevated);
+  color: var(--ink);
+  cursor: pointer;
+  border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
+  box-shadow: 3px 3px 0 var(--line);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--line);
+}
+
+.button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+/* Do not `composes: button` — merged order can restore .button’s white background under primary’s white text. */
+.buttonPrimary {
+  font-family: var(--iso-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid var(--accent-shadow);
+  border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--accent-shadow);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.buttonPrimary:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--accent-shadow);
+}
+
+.buttonPrimary:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 var(--accent-shadow);
+}
+
+.buttonGhost {
+  font-family: var(--iso-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+  padding: 0.55rem 1.1rem;
+  border: 2px solid var(--line);
+  border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
+  background: transparent;
+  color: var(--iso-rose-on-elevated);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--line);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.buttonGhost:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--line);
+}
+
+.buttonGhost:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 var(--line);
+}
+
+.card {
+  background: var(--paper);
+  border: 2px solid var(--line);
+  border-radius: 18px 12px 20px 14px / 14px 20px 12px 18px;
+  padding: 1.1rem 1.25rem;
+  box-shadow: 5px 5px 0 var(--iso-sketch-shadow);
+  text-align: left;
+}
+
+.title {
+  margin: 0 0 0.2rem;
+  font-size: 1.05rem;
+  font-weight: 650;
+  letter-spacing: -0.02em;
+  color: var(--iso-text);
+}
+
+.subtitle {
+  margin: 0 0 0.75rem;
+  font-size: 0.82rem;
+  color: var(--iso-text-muted);
+  font-weight: 500;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--iso-text-muted);
+}
+
+.input {
+  font-family: var(--iso-sans);
+  font-size: 1rem;
+  padding: 0.55rem 0.75rem;
+  border: 2px solid var(--line);
+  border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
+  background: var(--iso-elevated);
+  color: var(--iso-text);
+  outline: none;
+  box-shadow: inset 2px 2px 0 var(--iso-sketch-inset);
+}
+
+.input:focus {
+  border-color: var(--accent);
+  box-shadow: inset 2px 2px 0 var(--iso-sketch-inset), 0 0 0 2px var(--accent-soft);
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: var(--iso-text-muted);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 650;
+  padding: 0.2rem 0.55rem;
+  border: 2px solid var(--line);
+  border-radius: 999px 12px 999px 12px / 12px 999px 12px 999px;
+  background: var(--iso-elevated);
+  color: var(--iso-text);
+}
+
+.badgeAccent {
+  composes: badge;
+  background: var(--brand-soft);
+  border-color: var(--iso-rose-400);
+  color: var(--iso-rose-on-elevated);
+}
+
+.badgeSuccess {
+  composes: badge;
+  background: var(--iso-badge-success-bg);
+  border-color: var(--iso-badge-success-border);
+  color: var(--iso-badge-success-fg);
+}
+
+.badgeWarning {
+  composes: badge;
+  background: var(--iso-badge-warning-bg);
+  border-color: var(--iso-badge-warning-border);
+  color: var(--iso-badge-warning-fg);
+}
+
+/* Analyze / Live */
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  padding: 0.4rem;
+  border: 2px solid var(--line);
+  border-radius: 12px 16px 14px 10px / 14px 10px 16px 12px;
+  background: var(--iso-muted-surface);
+}
+
+.segmentedBtn {
+  font-family: var(--iso-sans);
+  font-weight: 600;
+  font-size: 0.82rem;
+  padding: 0.4rem 0.75rem;
+  border: 2px solid transparent;
+  border-radius: 8px 12px 10px 14px / 12px 10px 14px 8px;
+  background: transparent;
+  color: var(--iso-text-muted);
+  cursor: pointer;
+  transition: color 0.12s ease, background 0.12s ease, box-shadow 0.12s ease;
+}
+
+.segmentedBtn:hover {
+  color: var(--iso-text);
+}
+
+.segmentedBtnActive {
+  composes: segmentedBtn;
+  color: var(--iso-text);
+  background: var(--iso-elevated);
+  border-color: var(--line);
+  box-shadow: 2px 2px 0 var(--line);
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  align-items: center;
+}
+
+.stepperItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--iso-text-muted);
+}
+
+.stepperItemCurrent {
+  composes: stepperItem;
+  color: var(--accent);
+}
+
+.stepperItemDone {
+  composes: stepperItem;
+  color: var(--iso-emerald-600);
+}
+
+.stepperDot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--iso-border);
+}
+
+.stepperDotCurrent {
+  composes: stepperDot;
+  background: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-soft);
+}
+
+.stepperDotDone {
+  composes: stepperDot;
+  background: var(--iso-emerald-500);
+}
+
+.metric {
+  padding: 0.65rem 0.75rem;
+  border: 2px solid var(--line);
+  border-radius: 10px 14px 12px 16px / 14px 10px 16px 12px;
+  background: var(--iso-elevated);
+}
+
+.metricLabel {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--iso-text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.metricValue {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--iso-text);
+}
+
+.metricValuePositive {
+  composes: metricValue;
+  color: var(--iso-emerald-500);
+}
+
+.metricValueNegative {
+  composes: metricValue;
+  color: var(--iso-rose-500);
+}
+
+.metricSub {
+  font-size: 0.75rem;
+  color: var(--iso-text-muted);
+  margin-top: 0.15rem;
+}
+
+.callout {
+  padding: 0.65rem 0.85rem;
+  border: 2px solid var(--line);
+  border-radius: 12px 10px 14px 16px / 10px 14px 12px 14px;
+  background: var(--iso-muted-surface);
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: var(--iso-text);
+}
+
+.calloutTitle {
+  font-weight: 700;
+  font-size: 0.78rem;
+  margin: 0 0 0.35rem;
+  color: var(--iso-text);
+}
+
+.calloutTip {
+  composes: callout;
+  border-color: var(--iso-emerald-600);
+  background: var(--iso-emerald-soft);
+}
+
+.calloutInfo {
+  composes: callout;
+  border-color: var(--iso-callout-info-border);
+  background: var(--iso-callout-info-bg);
+}
+
+.calloutWarning {
+  composes: callout;
+  border-color: var(--iso-amber-500);
+  background: var(--iso-amber-soft);
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--iso-text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 0.55rem;
+  border: 2px solid var(--line);
+  border-radius: 999px;
+  background: var(--iso-muted-surface);
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--iso-emerald-600), var(--iso-emerald-400));
+  border-radius: inherit;
+  transition: width 0.35s ease;
+}
