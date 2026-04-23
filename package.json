@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "verify:airtable": "node scripts/verify-airtable.mjs"
+    "verify:airtable": "node scripts/verify-airtable.mjs",
+    "lab:new-project": "node scripts/create-project.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
