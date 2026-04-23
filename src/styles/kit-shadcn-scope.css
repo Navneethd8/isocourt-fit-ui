@@ -1,0 +1,104 @@
+/*
+  Full shadcn HSL token sets scoped under each kit pane so Button / Card / Input / Badge
+  read correctly on light or dark kit surfaces, with per-kit primary + ring tints.
+*/
+
+.kit-shadcn-scope {
+  margin-top: 0.35rem;
+  padding: 0.85rem;
+  border-radius: 12px;
+  text-align: left;
+}
+
+/* Light kit surfaces (shelf + light-stage columns) */
+.demo-panel--light .kit-shadcn-scope {
+  --radius: 0.65rem;
+  --background: 0 0% 98%;
+  --foreground: 240 6% 10%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 6% 10%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 6% 10%;
+  --primary: 160 84% 37%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 5% 94%;
+  --secondary-foreground: 240 6% 10%;
+  --muted: 240 5% 94%;
+  --muted-foreground: 240 4% 46%;
+  --accent: 240 5% 94%;
+  --accent-foreground: 240 6% 10%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 160 84% 37%;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+/* Dark kit surfaces */
+.demo-panel--dark .kit-shadcn-scope {
+  --radius: 0.65rem;
+  --background: 240 6% 4%;
+  --foreground: 0 0% 98%;
+  --card: 240 5% 9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 5% 9%;
+  --popover-foreground: 0 0% 98%;
+  --primary: 160 72% 42%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 4% 16%;
+  --secondary-foreground: 0 0% 98%;
+  --muted: 240 4% 16%;
+  --muted-foreground: 240 5% 65%;
+  --accent: 240 4% 16%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 63% 45%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 4% 18%;
+  --input: 240 4% 18%;
+  --ring: 160 72% 45%;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--card-foreground));
+}
+
+/* Kit-tinted primary + ring (matches each column’s accent story) */
+.demo-panel--light[data-kit-id='sketch-sf'] .kit-shadcn-scope {
+  --primary: 347 77% 49%;
+  --ring: 347 77% 49%;
+}
+
+.demo-panel--light[data-kit-id='hybrid-ink'] .kit-shadcn-scope {
+  --primary: 199 89% 42%;
+  --ring: 199 89% 46%;
+}
+
+.demo-panel--light[data-kit-id='isometric-chalk'] .kit-shadcn-scope {
+  --primary: 160 55% 36%;
+  --ring: 160 55% 40%;
+}
+
+.demo-panel--light[data-kit-id='current-site'] .kit-shadcn-scope {
+  --primary: 160 84% 37%;
+  --ring: 160 84% 37%;
+}
+
+.demo-panel--dark[data-kit-id='isometric-chalk'] .kit-shadcn-scope {
+  --primary: 152 56% 52%;
+  --ring: 152 56% 55%;
+}
+
+.demo-panel--dark[data-kit-id='current-site'] .kit-shadcn-scope {
+  --primary: 160 72% 42%;
+  --ring: 160 72% 45%;
+}
+
+.kit-shadcn-scope a {
+  color: hsl(var(--primary));
+}
+
+.kit-shadcn-scope a:hover {
+  text-decoration: underline;
+}

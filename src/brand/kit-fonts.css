@@ -1,0 +1,18 @@
+/*
+  Per-column UI font stacks: each kit shadows --iso-sans inside its .demo-panel so every primitive
+  that uses var(--iso-sans) picks up the right family without touching individual kit modules.
+  (Sketch column keeps Inter first, then Apple SF Pro Text/Display on supported systems.)
+*/
+.demo-panel[data-kit-id='sketch-sf'] {
+  --iso-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'SF Pro Rounded',
+    system-ui, sans-serif;
+}
+
+.demo-panel[data-kit-id='isometric-chalk'] {
+  --iso-sans: 'Source Serif 4', 'Georgia', 'Iowan Old Style', 'Palatino Linotype', 'Times New Roman', ui-serif,
+    serif;
+}
+
+.demo-panel[data-kit-id='hybrid-ink'] {
+  --iso-sans: 'Inter', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, system-ui, sans-serif;
+}
