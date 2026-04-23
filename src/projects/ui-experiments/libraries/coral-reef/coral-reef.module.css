@@ -1,0 +1,562 @@
+/* Drift & kelp — no gradient() in CSS. */
+.root {
+  --deep: #063f4a;
+  --foam: #e8f7f4;
+  --kelp: #1f7a5c;
+  --coral: #e85d4c;
+  --sand: #fff8f0;
+  font-family: "Nunito", "Segoe UI Rounded", system-ui, sans-serif;
+  color: #0c2f36;
+  font-size: 0.92rem;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(3px);
+  }
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 0.78rem;
+  border-radius: 999px 12px 999px 12px;
+  border: 2px solid var(--deep);
+  padding: 0.4rem 0.75rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.button {
+  background: var(--foam);
+  color: var(--deep);
+  box-shadow: 3px 3px 0 var(--kelp);
+}
+
+.button:hover {
+  transform: translateY(-1px);
+  box-shadow: 4px 4px 0 var(--kelp);
+}
+
+.button:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.buttonPrimary:focus-visible {
+  outline: 3px solid #fde68a;
+  outline-offset: 2px;
+}
+
+.buttonGhost:focus-visible {
+  outline: 3px solid var(--coral);
+  outline-offset: 2px;
+}
+
+.buttonPrimary {
+  background: var(--kelp);
+  color: #f3fffa;
+  box-shadow: 3px 3px 0 #0b5c44;
+}
+
+.buttonPrimary:hover {
+  box-shadow: 4px 4px 0 #0b5c44;
+}
+
+.buttonGhost {
+  background: #fff;
+  border-style: solid;
+  border-color: #89d4c1;
+  color: var(--deep);
+  box-shadow: none;
+}
+
+.buttonGhost:hover {
+  background: rgba(137, 212, 193, 0.2);
+  border-color: var(--kelp);
+}
+
+.fish {
+  width: 1.1rem;
+  height: 0.6rem;
+  flex-shrink: 0;
+  animation: floaty 1.4s ease-in-out infinite;
+}
+
+.card {
+  position: relative;
+  background: #fff;
+  border: 2px solid #b8e8dc;
+  border-radius: 3px 22px 8px 20px;
+  padding: 0.85rem 0.95rem 1rem;
+  text-align: left;
+  box-shadow: 0 4px 0 0 #c8f0e6, 0 8px 0 0 #8fd9c3;
+  overflow: hidden;
+}
+
+.reefWaves {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1.1rem;
+  color: #7dd3c0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.title {
+  margin: 0 0 0.1rem;
+  font-size: 0.95rem;
+  color: var(--deep);
+  font-weight: 900;
+}
+
+.subtitle {
+  margin: 0 0 0.55rem;
+  font-size: 0.72rem;
+  color: #0f5d6d;
+  font-weight: 700;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--kelp);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.8rem;
+  border: 2px solid #7dd3c0;
+  border-radius: 12px;
+  padding: 0.4rem 0.55rem;
+  background: var(--sand);
+  color: #06282e;
+  outline: none;
+}
+
+.input:focus {
+  border-color: var(--coral);
+  box-shadow: 0 0 0 2px rgba(232, 93, 76, 0.25);
+}
+
+.hint {
+  font-size: 0.64rem;
+  color: #3d7a85;
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.58rem;
+  font-weight: 900;
+  padding: 0.1rem 0.35rem 0.14rem;
+  border-radius: 999px;
+  border: 2px solid;
+}
+
+.badge {
+  background: #fff;
+  border-color: #5ebda8;
+  color: #064e3b;
+}
+
+.badgeAccent {
+  background: #ffedd5;
+  border-color: #ea580c;
+  color: #7c2d12;
+}
+
+.badgeSuccess {
+  background: #d1fae5;
+  border-color: #059669;
+  color: #064e3b;
+}
+
+.badgeWarning {
+  background: #fef3c7;
+  border-color: #d97706;
+  color: #713f12;
+}
+
+.segmented {
+  display: flex;
+  border: 2px solid #5ebda8;
+  background: #ecfaf6;
+  border-radius: 999px;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 0.3rem 0.55rem;
+  border: none;
+  background: transparent;
+  color: #3d7a85;
+  cursor: pointer;
+}
+
+.segmentedBtnActive {
+  background: #0d3b4a;
+  color: #e8f7f4;
+}
+
+.segmentedBtn + .segmentedBtn,
+.segmentedBtn + .segmentedBtnActive,
+.segmentedBtnActive + .segmentedBtn,
+.segmentedBtnActive + .segmentedBtnActive {
+  border-left: 2px solid #5ebda8;
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.55rem;
+  align-items: center;
+}
+
+.stepper li {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.66rem;
+  font-weight: 800;
+  color: #2d7a8a;
+}
+
+.stepperItem {
+  color: #2d7a8a;
+}
+
+.stepperItemCurrent {
+  color: #0a4d5a;
+}
+
+.stepperItemCurrent span:last-child {
+  text-decoration: wavy #e85d4c underline 1px;
+  text-underline-offset: 3px;
+}
+
+.stepperItemDone {
+  color: #047857;
+  opacity: 0.9;
+}
+
+.stepperDot,
+.stepperDotCurrent,
+.stepperDotDone {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #c8e8e0;
+  border: 2px solid #5ebda8;
+  flex-shrink: 0;
+}
+
+.stepperDotCurrent {
+  background: #7dd3c0;
+  border-color: #0d3b4a;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #4ade80;
+  animation: floaty 0.6s ease-in-out infinite;
+}
+
+.stepperDotDone {
+  background: #6ee7b7;
+  border-color: #047857;
+  animation: none;
+}
+
+.metric {
+  background: #fff;
+  border: 2px solid #7dd3c0;
+  border-radius: 3px 16px 3px 16px;
+  padding: 0.5rem 0.6rem;
+  box-shadow: 3px 3px 0 #c8e8e0;
+}
+
+.metricLabel {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #0f5d6d;
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: #063f4a;
+  font-variant-numeric: tabular-nums;
+}
+
+.metricValuePositive {
+  color: #047857;
+}
+
+.metricValueNegative {
+  color: #b91c1c;
+}
+
+.metricSub {
+  font-size: 0.65rem;
+  color: #0f5d6d;
+  font-weight: 600;
+  margin-top: 0.05rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  font-size: 0.75rem;
+  line-height: 1.5;
+  padding: 0.5rem 0.6rem;
+  border: 2px solid #5ebda8;
+  background: #f0fdfa;
+  color: #064e3b;
+  border-radius: 4px 12px 4px 12px;
+}
+
+.calloutTip {
+  background: #fff7ed;
+  border-color: #e85d4c;
+  color: #7c2d12;
+}
+
+.calloutInfo {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0c4a6e;
+}
+
+.calloutWarning {
+  background: #fffbeb;
+  border-color: #b45309;
+  color: #713f12;
+}
+
+.calloutTitle {
+  font-size: 0.68rem;
+  font-weight: 900;
+  margin: 0 0 0.2rem;
+  text-transform: uppercase;
+  color: #0d3b4a;
+}
+
+.callout.calloutTip .calloutTitle {
+  color: #7c2d12;
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: #0f5d6d;
+  margin-bottom: 0.3rem;
+}
+
+.progressTrack {
+  height: 10px;
+  border: 2px solid #0d3b4a;
+  background: #e0f2f0;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: #1f7a5c;
+  border-right: 2px solid #063f4a;
+  transition: width 0.45s ease;
+}
+
+:global(html.dark) .root {
+  --deep: #99f6e4;
+  --foam: #0f172a;
+  --kelp: #5eead4;
+  --coral: #fb923c;
+  --sand: #18181b;
+  color: #e0f2f1;
+}
+
+:global(html.dark) .card {
+  background: #18181b;
+  border-color: #134e4a;
+  box-shadow: 0 4px 0 0 #0f3d3d, 0 8px 0 0 #115e59;
+}
+
+:global(html.dark) .title {
+  color: #ccfbf1;
+}
+
+:global(html.dark) .subtitle,
+:global(html.dark) .hint,
+:global(html.dark) .metricLabel,
+:global(html.dark) .metricSub,
+:global(html.dark) .progressLabel {
+  color: #94a3b8;
+}
+
+:global(html.dark) .input {
+  background: #0f172a;
+  color: #e0f2f1;
+  border-color: #2dd4bf;
+}
+
+:global(html.dark) .metric {
+  background: #18181b;
+  border-color: #2dd4bf;
+  box-shadow: 3px 3px 0 #134e4a;
+}
+
+:global(html.dark) .metricValue,
+:global(html.dark) .metricValueNegative {
+  color: #ccfbf1;
+}
+
+:global(html.dark) .metricValuePositive {
+  color: #6ee7b7;
+}
+
+:global(html.dark) .segmented {
+  background: #0f172a;
+  border-color: #2dd4bf;
+}
+
+:global(html.dark) .segmentedBtn {
+  color: #94a3b8;
+}
+
+:global(html.dark) .segmentedBtnActive {
+  background: #ccfbf1;
+  color: #042f2e;
+}
+
+:global(html.dark) .callout,
+:global(html.dark) .calloutTip {
+  background: #134e4a;
+  color: #ccfbf1;
+  border-color: #5eead4;
+}
+
+:global(html.dark) .calloutInfo {
+  background: #0c2a3a;
+  color: #bae6fd;
+}
+
+:global(html.dark) .calloutWarning {
+  background: #422006;
+  color: #ffedd5;
+}
+
+:global(html.dark) .calloutTitle {
+  color: #99f6e4;
+}
+
+:global(html.dark) .progressTrack {
+  background: #0f172a;
+}
+
+:global(html.dark) .badge {
+  background: #042f2e;
+  color: #ccfbf1;
+  border-color: #2dd4bf;
+}
+
+:global(html.dark) .badgeAccent {
+  background: #3b0764;
+  color: #f5f3ff;
+  border-color: #c084fc;
+}
+
+:global(html.dark) .badgeSuccess {
+  background: #022c22;
+  color: #6ee7b7;
+  border-color: #10b981;
+}
+
+:global(html.dark) .badgeWarning {
+  background: #422006;
+  color: #fef9c3;
+  border-color: #fbbf24;
+}
+
+:global(html.dark) .button {
+  background: #134e4a;
+  color: #ecfdf5;
+  border-color: #5eead4;
+  box-shadow: 3px 3px 0 #042f2e;
+}
+
+:global(html.dark) .button:hover {
+  background: #115e59;
+}
+
+:global(html.dark) .buttonPrimary {
+  background: #f97316;
+  color: #431407;
+  border-color: #fed7aa;
+  box-shadow: 3px 3px 0 #7c2d12;
+}
+
+:global(html.dark) .buttonGhost {
+  background: transparent;
+  color: #99f6e4;
+  border-color: #2dd4bf;
+}
+
+:global(html.dark) .buttonGhost:hover {
+  background: rgba(45, 212, 191, 0.12);
+}
+
+:global(html.dark) .buttonPrimary:focus-visible {
+  outline: 3px solid #fef3c7;
+  outline-offset: 2px;
+}
+
+:global(html.dark) .buttonGhost:focus-visible {
+  outline: 3px solid #fb923c;
+  outline-offset: 2px;
+}
+
+:global(html.dark) .button:focus-visible {
+  outline: 3px solid #fb923c;
+  outline-offset: 2px;
+}
