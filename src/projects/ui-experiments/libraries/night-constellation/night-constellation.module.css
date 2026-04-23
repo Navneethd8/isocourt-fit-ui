@@ -1,0 +1,822 @@
+/* Solid fills only — no CSS gradient() functions. */
+.panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #1e2a3d;
+  background-color: #05070b;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Ccircle cx='8' cy='12' r='0.7' fill='%23f0f4ff'/%3E%3Ccircle cx='44' cy='6' r='0.4' fill='%23f0f4ff'/%3E%3Ccircle cx='78' cy='24' r='0.5' fill='%23e0e7ff'/%3E%3Ccircle cx='20' cy='40' r='0.4' fill='%23e0e7ff'/%3E%3Ccircle cx='60' cy='48' r='0.6' fill='%23f0f4ff'/%3E%3Ccircle cx='90' cy='64' r='0.4' fill='%23e0e7ff'/%3E%3Ccircle cx='32' cy='72' r='0.5' fill='%23f0f4ff'/%3E%3Ccircle cx='12' cy='88' r='0.4' fill='%23e0e7ff'/%3E%3Cline x1='8' y1='12' x2='60' y2='48' stroke='%232a3f5e' stroke-width='0.4'/%3E%3Cline x1='44' y1='6' x2='78' y2='24' stroke='%232a3f5e' stroke-width='0.3'/%3E%3Cline x1='20' y1='40' x2='32' y2='72' stroke='%232a3f5e' stroke-width='0.35'/%3E%3C/svg%3E");
+  background-size: 100px 100px;
+  box-shadow: inset 0 0 0 1px rgba(200, 230, 255, 0.04);
+}
+
+.panelLight {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #c5d0e0;
+  background-color: #f0f4fa;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cpath d='M0 15h60M0 30h60M0 45h60M15 0v60M30 0v60M45 0v60' stroke='%23b8c5d8' stroke-width='0.3' fill='none'/%3E%3C/svg%3E");
+  background-size: 60px 60px;
+}
+
+.panel > *,
+.panelLight > * {
+  position: relative;
+  z-index: 1;
+}
+
+.root {
+  --ink: #e2e8f4;
+  --dim: #8b9bb8;
+  --mesh: #121a2a;
+  --lime: #9fe870;
+  --violet: #a78bfa;
+  --void: #05070b;
+  font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.04em;
+  border: 1px solid #3d4f6a;
+  background: #0d1522;
+  color: var(--ink);
+  box-shadow: 0 0 0 0 var(--lime);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+
+.button:hover {
+  border-color: var(--lime);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--lime);
+}
+
+.button:focus-visible {
+  outline: 1px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.orb {
+  width: 0.55rem;
+  height: 0.55rem;
+  flex-shrink: 0;
+}
+
+.path {
+  animation: twinkle 1.4s ease-in-out infinite;
+}
+
+.pathDelay {
+  animation: twinkle 1.4s ease-in-out 0.5s infinite;
+}
+
+.buttonPrimary {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.45rem 0.7rem;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--lime);
+  background: #0b1a0f;
+  color: #e8ffe0;
+  box-shadow: 0 0 10px 0 rgba(159, 232, 112, 0.12);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buttonPrimary:hover {
+  background: #102818;
+  box-shadow: 0 0 0 1px var(--lime);
+}
+
+.buttonPrimary:focus-visible {
+  outline: 1px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.buttonGhost {
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.45rem 0.7rem;
+  border-radius: 2px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  letter-spacing: 0.04em;
+  border: 1px solid transparent;
+  background: rgba(20, 30, 48, 0.6);
+  color: #b8c8e8;
+  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+}
+
+.buttonGhost:hover {
+  border-color: #4a5a78;
+  color: var(--ink);
+  background: #121a2a;
+}
+
+.buttonGhost:focus-visible {
+  outline: 1px solid var(--violet);
+  outline-offset: 2px;
+}
+
+.card {
+  position: relative;
+  background: #0a101c;
+  border: 1px solid #2a3f5e;
+  border-radius: 3px;
+  padding: 0.85rem 0.9rem 1rem;
+  text-align: left;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.mesh {
+  position: absolute;
+  right: 0.25rem;
+  bottom: 0.35rem;
+  width: 4.2rem;
+  height: 4.2rem;
+  pointer-events: none;
+  opacity: 0.7;
+  color: var(--lime);
+}
+
+.netLine {
+  stroke: #3d5a4a;
+  stroke-width: 0.4;
+  fill: none;
+}
+
+.netNode {
+  fill: var(--lime);
+}
+
+.netNode2 {
+  fill: var(--violet);
+  animation: twinkle 1.2s ease-in-out infinite;
+}
+
+.title {
+  margin: 0 0 0.1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+
+.subtitle {
+  margin: 0 0 0.55rem;
+  font-size: 0.68rem;
+  color: var(--dim);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.78rem;
+  padding: 0.4rem 0.5rem;
+  border: 1px solid #2a3f5e;
+  background: #060a12;
+  color: var(--ink);
+  border-radius: 2px;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.input::placeholder {
+  color: #5a6a8a;
+}
+
+.input:focus {
+  border-color: var(--violet);
+  background: #080c14;
+}
+
+.hint {
+  font-size: 0.6rem;
+  color: #6a7a9a;
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.55rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  padding: 0.1rem 0.35rem 0.12rem;
+  border: 1px solid #2a3f5e;
+  background: #0d1522;
+  color: #c8d4ec;
+  border-radius: 2px;
+  font-family: inherit;
+}
+
+.badgeAccent {
+  background: #13182a;
+  border-color: #7c3aed;
+  color: #ddd6fe;
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.2);
+}
+
+.badgeSuccess {
+  background: #0a1f12;
+  border-color: #166534;
+  color: #bbf7d0;
+}
+
+.badgeWarning {
+  background: #1f1208;
+  border-color: #9a3412;
+  color: #fed7aa;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0;
+  border: 1px solid #2a3f5e;
+  background: #060a12;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.segmentedBtn {
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-right: 1px solid #1e2a3d;
+  background: transparent;
+  color: #6a7a9a;
+  cursor: pointer;
+}
+
+.segmentedBtn:last-of-type,
+.segmentedBtnActive:last-of-type {
+  border-right: none;
+}
+
+.segmentedBtn:hover {
+  color: #fff;
+  background: #0d1522;
+}
+
+.segmentedBtnActive {
+  font-family: inherit;
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  border-right: 1px solid #1e2a3d;
+  background: #121a2a;
+  color: var(--lime);
+  cursor: pointer;
+}
+
+.stepperWrap {
+  position: relative;
+  padding-left: 0.75rem;
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.rail {
+  position: absolute;
+  left: 0.2rem;
+  top: 0.35rem;
+  bottom: 0.4rem;
+  width: 1px;
+  background: #2a3f5e;
+}
+
+.stepper li {
+  position: relative;
+  list-style: none;
+  display: block;
+  padding-left: 0.1rem;
+  font-size: 0.63rem;
+  line-height: 1.3;
+  color: #6a7a9a;
+  font-weight: 500;
+}
+
+.stepper li::before {
+  content: "";
+  position: absolute;
+  left: -0.58rem;
+  top: 0.35em;
+  width: 5px;
+  height: 5px;
+  border: 1px solid #2a3f5e;
+  background: #060a12;
+  z-index: 1;
+  transform: rotate(45deg);
+}
+
+.stepperItem {
+  color: inherit;
+}
+
+.stepperItemCurrent {
+  color: #f8fafc;
+  font-weight: 600;
+}
+
+.stepperItemCurrent::before {
+  border-color: var(--lime) !important;
+  background: var(--lime) !important;
+  box-shadow: 0 0 6px 0 rgba(159, 232, 112, 0.4);
+  animation: twinkle 0.8s ease-in-out infinite;
+}
+
+.stepperItemDone {
+  color: #86efac;
+  text-decoration: line-through 1px rgba(134, 239, 172, 0.2);
+  text-decoration-thickness: 1px;
+}
+
+.stepperItemDone::before {
+  background: #14532d !important;
+  border-color: #22c55e !important;
+}
+
+.metric {
+  background: #060a12;
+  border: 1px solid #2a3f5e;
+  padding: 0.5rem 0.55rem;
+  border-radius: 2px;
+  font-size: 0.65rem;
+}
+
+.metricLabel {
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: #6a7a9a;
+  margin-bottom: 0.15rem;
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.metricValuePositive {
+  color: #86efac;
+}
+
+.metricValueNegative {
+  color: #f472b6;
+}
+
+.metricSub {
+  font-size: 0.58rem;
+  color: #6a7a9a;
+  margin-top: 0.12rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  font-size: 0.7rem;
+  line-height: 1.5;
+  padding: 0.5rem 0.55rem;
+  border: 1px solid #2a3f5e;
+  background: #080c14;
+  color: #d0dbe8;
+  border-radius: 2px;
+}
+
+.calloutTip {
+  border-color: #166534;
+  background: #0a1a0f;
+  color: #bbf7d0;
+  box-shadow: 0 0 0 1px rgba(22, 101, 52, 0.2);
+}
+
+.calloutInfo {
+  border-color: #1d4ed8;
+  background: #0a1224;
+  color: #c7d2fe;
+}
+
+.calloutWarning {
+  border-color: #9a3412;
+  background: #1a0e08;
+  color: #fed7aa;
+}
+
+.calloutTitle {
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: #8b9bb8;
+  margin: 0 0 0.3rem;
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #6a7a9a;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.progressTrack {
+  height: 4px;
+  background: #0d1522;
+  border: 1px solid #1e2a3d;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: #9fe870;
+  border-right: 1px solid #d9f99d;
+  box-shadow: 0 0 6px 0 rgba(159, 232, 112, 0.25);
+  transition: width 0.4s ease;
+}
+
+/*
+ * Dark kit on light column: “daytime mission” — crisp hierarchy, not a recolored night skin.
+ * Secondary = paper field; primary = deep launch green; ghost = wireframe only.
+ */
+:global(.demo-panel--light) .root {
+  --ink: #0f172a;
+  --dim: #64748b;
+  --mesh: #e2e8f0;
+  --lime: #16a34a;
+  --violet: #7c3aed;
+  --void: #f8fafc;
+  color: #0f172a;
+}
+
+:global(.demo-panel--light).panelLight {
+  border-color: #cbd5e1;
+  background-color: #f1f5f9;
+}
+
+:global(.demo-panel--light) .card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 0 #e2e8f0, 0 12px 32px rgba(15, 23, 42, 0.06);
+}
+
+:global(.demo-panel--light) .title {
+  color: #0f172a;
+}
+
+:global(.demo-panel--light) .subtitle {
+  color: #64748b;
+}
+
+:global(.demo-panel--light) .label,
+:global(.demo-panel--light) .hint,
+:global(.demo-panel--light) .metricLabel,
+:global(.demo-panel--light) .metricSub,
+:global(.demo-panel--light) .progressLabel,
+:global(.demo-panel--light) .calloutTitle {
+  color: #64748b;
+}
+
+:global(.demo-panel--light) .button {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  box-shadow: none;
+}
+
+:global(.demo-panel--light) .button:hover {
+  border-color: #16a34a;
+  background: #f8fafc;
+  color: #14532d;
+}
+
+:global(.demo-panel--light) .button:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+:global(.demo-panel--light) .buttonPrimary:focus-visible,
+:global(.demo-panel--light) .buttonGhost:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+}
+
+:global(.demo-panel--light) .buttonPrimary {
+  background: #15803d;
+  color: #f0fdf4;
+  border: 1px solid #166534;
+  box-shadow: 0 1px 0 rgba(22, 101, 52, 0.35);
+}
+
+:global(.demo-panel--light) .buttonPrimary:hover {
+  background: #166534;
+  border-color: #14532d;
+}
+
+:global(.demo-panel--light) .buttonGhost {
+  background: transparent;
+  color: #475569;
+  border: 1px dashed #94a3b8;
+}
+
+:global(.demo-panel--light) .buttonGhost:hover {
+  border-style: solid;
+  border-color: #64748b;
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+:global(.demo-panel--light) .input {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+}
+
+:global(.demo-panel--light) .input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.25);
+}
+
+:global(.demo-panel--light) .badge {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #e2e8f0;
+}
+
+:global(.demo-panel--light) .badgeAccent {
+  background: #ede9fe;
+  color: #5b21b6;
+  border-color: #c4b5fd;
+  box-shadow: none;
+}
+
+:global(.demo-panel--light) .badgeSuccess {
+  background: #ecfdf5;
+  color: #166534;
+  border-color: #86efac;
+}
+
+:global(.demo-panel--light) .badgeWarning {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fcd34d;
+}
+
+:global(.demo-panel--light) .segmented {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+:global(.demo-panel--light) .segmentedBtn {
+  color: #64748b;
+  border-right-color: #e2e8f0;
+}
+
+:global(.demo-panel--light) .segmentedBtn:hover {
+  color: #0f172a;
+  background: #f8fafc;
+}
+
+:global(.demo-panel--light) .segmentedBtnActive {
+  background: #ecfdf5;
+  color: #14532d;
+  border-right-color: #bbf7d0;
+}
+
+:global(.demo-panel--light) .rail {
+  background: #cbd5e1;
+}
+
+:global(.demo-panel--light) .stepper li {
+  color: #64748b;
+}
+
+:global(.demo-panel--light) .stepper li::before {
+  border-color: #cbd5e1;
+  background: #ffffff;
+}
+
+:global(.demo-panel--light) .stepperItemCurrent {
+  color: #14532d;
+}
+
+:global(.demo-panel--light) .stepperItemCurrent::before {
+  border-color: #16a34a !important;
+  background: #22c55e !important;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.25);
+}
+
+:global(.demo-panel--light) .stepperItemDone {
+  color: #15803d;
+}
+
+:global(.demo-panel--light) .stepperItemDone::before {
+  background: #bbf7d0 !important;
+  border-color: #86efac !important;
+}
+
+:global(.demo-panel--light) .metric {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+}
+
+:global(.demo-panel--light) .metricValue,
+:global(.demo-panel--light) .metricValuePositive,
+:global(.demo-panel--light) .metricValueNegative {
+  color: #0f172a;
+}
+
+:global(.demo-panel--light) .metricValuePositive {
+  color: #15803d;
+}
+
+:global(.demo-panel--light) .metricValueNegative {
+  color: #be123c;
+}
+
+:global(.demo-panel--light) .callout {
+  background: #f8fafc;
+  color: #334155;
+  border-color: #e2e8f0;
+}
+
+:global(.demo-panel--light) .calloutTip {
+  background: #ecfdf5;
+  color: #14532d;
+  border-color: #86efac;
+  box-shadow: inset 3px 0 0 0 #22c55e;
+}
+
+:global(.demo-panel--light) .calloutInfo {
+  background: #eff6ff;
+  color: #1e40af;
+  border-color: #93c5fd;
+}
+
+:global(.demo-panel--light) .calloutWarning {
+  background: #fffbeb;
+  color: #92400e;
+  border-color: #fcd34d;
+}
+
+:global(.demo-panel--light) .progressTrack {
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+:global(.demo-panel--light) .progressFill {
+  background: #22c55e;
+  border-right-color: #166534;
+  box-shadow: none;
+}
+
+:global(.demo-panel--light) .mesh {
+  color: #22c55e;
+  opacity: 0.45;
+}
+
+:global(.demo-panel--light) .netLine {
+  stroke: #cbd5e1;
+}
+
+:global(.demo-panel--light) .netNode {
+  fill: #16a34a;
+}
+
+:global(.demo-panel--light) .netNode2 {
+  fill: #7c3aed;
+}
+
+/* Global app dark + dark column: lift edge definition */
+:global(html.dark) .panel {
+  border-color: #334155;
+  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.12);
+}
+
+:global(html.dark) .button,
+:global(html.dark) .buttonGhost {
+  border-color: #475569;
+}
+
+:global(html.dark) .card {
+  border-color: #334155;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+:global(html.dark) .badge {
+  background: #0f172a;
+  color: #e2e8f0;
+  border-color: #64748b;
+}
+
+:global(html.dark) .badgeAccent {
+  background: #1e1b4b;
+  color: #ede9fe;
+  border-color: #a78bfa;
+  box-shadow: 0 0 0 1px rgba(167, 139, 250, 0.35);
+}
+
+:global(html.dark) .badgeSuccess {
+  background: #052e16;
+  color: #bbf7d0;
+  border-color: #22c55e;
+}
+
+:global(html.dark) .badgeWarning {
+  background: #431407;
+  color: #fed7aa;
+  border-color: #ea580c;
+}
+
+:global(html.dark) .subtitle,
+:global(html.dark) .hint,
+:global(html.dark) .metricSub,
+:global(html.dark) .progressLabel {
+  color: #94a3b8;
+}
+
+:global(html.dark) .button:focus-visible,
+:global(html.dark) .buttonPrimary:focus-visible,
+:global(html.dark) .buttonGhost:focus-visible {
+  outline: 2px solid #c4b5fd;
+  outline-offset: 2px;
+}
