@@ -9,7 +9,9 @@ import {
 } from '@/lib/paneLayoutStorage'
 
 /**
- * Which design-kit columns are shown on a lab page, persisted per project + page in localStorage.
+ * Which design-kit columns are on for a lab page (ordered), persisted per project + page. The main grid
+ * renders every visible kit (`displayIds` shares the same order as `visibleIds`); when the row is wider
+ * than the viewport, `PaneKitGrid` scrolls horizontally.
  * We subscribe with state + `useMemo` (not `useSyncExternalStore`) because `getVisiblePaneIdsForPage` returns
  * a fresh array each call — a snapshot that changes referentially every read triggers infinite re-renders
  * in `useSyncExternalStore` and can blank the page.
@@ -55,5 +57,11 @@ export function usePaneLayout(pageId: PanePageId) {
     [projectSlug, pageId, catalogIds],
   )
 
-  return { visibleIds, setVisible, showAll, toggle }
+  return {
+    visibleIds,
+    displayIds: visibleIds,
+    setVisible,
+    showAll,
+    toggle,
+  }
 }

@@ -10,6 +10,7 @@ import { AnalyzePage } from './projects/lab/AnalyzePage'
 import { LivePage } from './projects/lab/LivePage'
 import { ProjectLayout } from './routes/ProjectLayout'
 import { ProjectShortcutRedirect } from './routes/ProjectShortcutRedirect'
+import { WorkbenchSampleFlowsGate } from './routes/WorkbenchSampleFlowsGate'
 import { LabHomePage } from './pages/LabHomePage'
 import { ProjectsHubPage } from './pages/ProjectsHubPage'
 import './App.css'
@@ -41,8 +42,22 @@ export default function App() {
               <Route path="/projects/:projectSlug" element={<ProjectLayout />}>
                 <Route index element={<Navigate to="kits" relative="path" replace />} />
                 <Route path="kits" element={<KitShelfPage />} />
-                <Route path="analyze" element={<AnalyzePage />} />
-                <Route path="live" element={<LivePage />} />
+                <Route
+                  path="analyze"
+                  element={
+                    <WorkbenchSampleFlowsGate>
+                      <AnalyzePage />
+                    </WorkbenchSampleFlowsGate>
+                  }
+                />
+                <Route
+                  path="live"
+                  element={
+                    <WorkbenchSampleFlowsGate>
+                      <LivePage />
+                    </WorkbenchSampleFlowsGate>
+                  }
+                />
               </Route>
               <Route path="/kits" element={<Navigate to={`/projects/${p}/kits`} replace />} />
               <Route path="/analyze" element={<Navigate to={`/projects/${p}/analyze`} replace />} />

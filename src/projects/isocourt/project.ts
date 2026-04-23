@@ -13,4 +13,5 @@ export const isocourtProjectDef: ProjectDef = {
   name: 'IsoCourt',
   description:
     'Product skin (isocourt.fit) as a first-class column plus shared design kits for comparison.',
+  labSampleFlows: true,
 }

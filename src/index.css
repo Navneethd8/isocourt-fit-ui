@@ -11,6 +11,8 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    /* Pane kit row uses width:max-content; keep overflow inside .app-grid-wrap, not on the viewport */
+    overflow-x: hidden;
   }
 
   body {

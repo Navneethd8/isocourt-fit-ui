@@ -6,12 +6,13 @@ import { DocumentTitle } from '@/components/DocumentTitle'
 import { KitShadcnLayer } from '@/components/KitShadcnLayer'
 import { MaterialKitIcons } from '@/components/MaterialKitIcons'
 import { KitPaneBar } from '@/components/KitPaneBar'
+import { PaneKitGrid } from '@/components/PaneKitGrid'
 import { usePaneLayout } from '@/hooks/usePaneLayout'
 
 export function LivePage() {
   const kits = useKits()
-  const { visibleIds } = usePaneLayout('live')
-  const visibleKits = useMemo(() => orderKitsById(visibleIds, kits), [visibleIds, kits])
+  const { displayIds } = usePaneLayout('live')
+  const visibleKits = useMemo(() => orderKitsById(displayIds, kits), [displayIds, kits])
   const [session, setSession] = useState<'idle' | 'connecting' | 'live'>('idle')
 
   const steps = useMemo(
@@ -29,8 +30,9 @@ export function LivePage() {
       <header className="page-head">
         <h1>Live (sample flow — IsoCourt-inspired)</h1>
         <p className="page-lede">
-          Stub “live” UI: connection, capacity, and stream health — relabel for any product. Non-IsoCourt projects
-          get the same layout with shelf kits only if that’s all the resolver provides.
+          Stub “live” UI: connection, capacity, and stream health. The <strong>sample</strong> here is{' '}
+          <strong>IsoCourt-shaped</strong> like Analyze; kit columns are whatever the active project exposes. If you
+          need another page type for a project, add it in code and wire the nav—we can do that on request.
         </p>
       </header>
       <KitPaneBar pageId="live" pageLabel="Live" />
@@ -39,7 +41,7 @@ export function LivePage() {
           No panes visible. Turn on a design kit above to compare the flow.
         </p>
       ) : null}
-      <div className="app-grid">
+      <PaneKitGrid columnCount={visibleKits.length}>
         {visibleKits.map((kit) => {
           const { SegmentedControl, Stepper, Metric, Callout, ProgressBar, Button, Card, Badge } = kit
           return (
@@ -48,7 +50,7 @@ export function LivePage() {
                 <h2 id={`${kit.id}-panel-title`}>{kit.name}</h2>
                 <p>{kit.tagline}</p>
               </header>
-              <MaterialKitIcons kitName={kit.name} />
+              <MaterialKitIcons kitName={kit.name} kitId={kit.id} />
               <SegmentedControl
                 ariaLabel="Session simulation"
                 options={[
@@ -93,7 +95,7 @@ export function LivePage() {
             </DemoKitColumn>
           )
         })}
-      </div>
+      </PaneKitGrid>
     </>
   )
 }

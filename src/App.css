@@ -1,7 +1,14 @@
 .app {
   max-width: 1200px;
+  width: 100%;
+  min-width: 0;
   margin: 0 auto;
   padding: 2.5rem 1.25rem 4rem;
+  box-sizing: border-box;
+}
+
+.app-main {
+  min-width: 0;
 }
 
 .app-bar {
@@ -25,31 +32,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: 0.35rem;
-}
-
-.site-nav__project {
-  display: flex;
-  align-items: center;
-  margin: 0;
-}
-
-.site-nav__select {
-  font-family: var(--iso-sans);
-  font-size: 0.8rem;
-  font-weight: 600;
-  padding: 0.4rem 1.5rem 0.4rem 0.5rem;
-  min-height: 36px;
-  border-radius: 8px;
-  border: 1px solid var(--iso-border);
-  background: var(--iso-elevated);
-  color: var(--iso-text);
-  cursor: pointer;
-  max-width: 11rem;
-}
-
-.site-nav__select:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--iso-emerald-500);
 }
 
 /* Kit shelf / analyze / live: only on project routes, not on lab home or the projects directory */
@@ -149,11 +131,128 @@
   color: var(--iso-text-muted);
 }
 
-.pane-chooser__row {
+.pane-chooser__strip {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  gap: 0.45rem 0.75rem;
+  gap: 0.35rem;
+  width: 100%;
+  max-width: 100%;
+  padding: 0.15rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-gutter: stable;
+}
+
+.pane-chooser__strip-label {
+  flex: 0 0 auto;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--iso-text-muted);
+  padding-right: 0.1rem;
+}
+
+.pane-chooser__strip-divider {
+  flex: 0 0 auto;
+  width: 1px;
+  align-self: stretch;
+  min-height: 1.45rem;
+  margin: 0 0.15rem;
+  background: var(--iso-border);
+}
+
+.pane-chooser__cell {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.pane-chooser__cell--off {
+  min-width: 0;
+}
+
+.pane-chooser__handle {
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 1.1rem;
+  min-height: 1.75rem;
+  margin-right: 0.05rem;
+  border-radius: 6px;
+  cursor: grab;
+  color: var(--iso-text-muted);
+  user-select: none;
+  touch-action: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.pane-chooser__handle:hover {
+  background: var(--iso-hover-tint);
+  color: var(--iso-text);
+}
+
+.pane-chooser__handle:active {
+  cursor: grabbing;
+}
+
+.pane-chooser__handle-dots {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 0.45;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: -0.12em;
+  opacity: 0.85;
+}
+
+.pane-chooser__cell--dragging {
+  opacity: 0.45;
+}
+
+.pane-chooser__cell--drop-target {
+  outline: 2px solid var(--iso-emerald-500);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.pane-chooser__link--strip {
+  flex: 0 0 auto;
+  margin-left: auto;
+  white-space: nowrap;
+  padding: 0.2rem 0.4rem;
+}
+
+.pane-chooser__hint,
+.pane-chooser__stashed {
+  margin: 0.15rem 0 0.35rem;
+  max-width: 72ch;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--iso-text-muted);
+  font-weight: 500;
+}
+
+.pane-chooser__stashed strong {
+  color: var(--iso-text);
+  font-weight: 600;
+}
+
+.pane-chooser__strip .pane-chooser__chip-slot--deck {
+  font-size: 0.55rem;
+  font-weight: 800;
+  padding: 0.04rem 0.18rem;
+  line-height: 1.1;
+  max-width: 2.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: clip;
 }
 
 .pane-chooser__chip {
@@ -182,6 +281,61 @@
 .pane-chooser__chip--off {
   opacity: 0.58;
   color: var(--iso-text-muted);
+}
+
+.pane-chooser__chip .pane-chooser__chip-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 0;
+}
+
+.pane-chooser__chip-slot {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.1rem;
+  padding: 0.08rem 0.28rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  background: var(--iso-emerald-500);
+  color: #fff;
+}
+
+.pane-chooser__chip-slot--deck {
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  min-width: auto;
+  background: var(--iso-muted-surface);
+  color: var(--iso-text-muted);
+  border: 1px solid var(--iso-border);
+}
+
+.pane-chooser__chip--in-grid.pane-chooser__chip--on {
+  border-color: var(--iso-emerald-600);
+}
+
+.pane-chooser__chip--on-deck.pane-chooser__chip--on {
+  border-style: dashed;
+  opacity: 0.95;
+}
+
+.pane-chooser__inline-deck {
+  display: inline-block;
+  font-size: 0.72em;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.08rem 0.28rem;
+  border-radius: 4px;
+  border: 1px solid var(--iso-border);
+  color: var(--iso-text-muted);
+  background: var(--iso-muted-surface);
 }
 
 .pane-chooser__chip-on {
@@ -431,6 +585,28 @@
   align-items: stretch;
 }
 
+/** Horizontal scroll on small viewports when explicit pane columns exceed width. */
+.app-grid-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.app-grid.app-grid--pane-kit-columns {
+  justify-content: start;
+  width: max-content;
+  max-width: none;
+  align-items: stretch;
+}
+
+/** Extra bottom space when a scrollbar appears under many pane columns */
+.app-grid-wrap--pane-scroll-many {
+  padding-bottom: 0.35rem;
+}
+
 .demo-panel {
   display: flex;
   flex-direction: column;
@@ -626,6 +802,27 @@
 
 .demo-panel--light[data-kit-id='current-site'] .material-kit-icons__warn {
   color: var(--iso-sky-500);
+}
+
+/* UI Experiments kits: Material row when app is dark but column is still light-stage */
+html.dark .demo-panel--light[data-kit-id^='ux-'] .material-kit-icons__row {
+  color: #71717a;
+}
+
+html.dark .demo-panel--light[data-kit-id^='ux-'] .material-kit-icons__caption {
+  color: #a1a1aa;
+}
+
+html.dark .demo-panel--light[data-kit-id^='ux-'] .material-kit-icons__accent {
+  color: #34d399;
+}
+
+html.dark .demo-panel--light[data-kit-id^='ux-'] .material-kit-icons__warn {
+  color: #fbbf24;
+}
+
+html.dark .demo-panel--dark[data-kit-id^='ux-'] .material-kit-icons__row {
+  color: rgba(226, 232, 240, 0.78);
 }
 
 /* ----- Kit column: panel + site-chrome feedback below ----- */
@@ -1109,6 +1306,8 @@
 }
 
 .projects-card {
+  position: relative;
+  isolation: isolate;
   margin: 0;
   padding: 1rem 1.1rem;
   border-radius: 10px;
@@ -1118,6 +1317,16 @@
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
+}
+
+/* Full-card click (last in DOM, above text) — Kits / Analyze / Live links use z-index above. */
+.projects-card__hit {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 10px;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .projects-card__name {
@@ -1152,6 +1361,8 @@
 }
 
 .projects-card__links {
+  position: relative;
+  z-index: 2;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

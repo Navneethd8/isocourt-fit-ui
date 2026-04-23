@@ -54,9 +54,10 @@ export function LabHomePage() {
         <article className="lab-landing__card lab-landing__card--wide">
           <h2 className="lab-landing__h">Panorama & feedback</h2>
           <p>
-            On each page, use the <strong>panes</strong> bar to show or hide design-kit columns (saved per
-            page). Every column has a local <strong>poll</strong> and <strong>comment</strong> thread for quick
-            critique while you iterate. Nothing leaves this browser.
+            On each page, the <strong>panes</strong> bar is for adding, removing, and <strong>ordering</strong> kit
+            columns (saved per page). The row scrolls horizontally when you turn on more than four. Every column has a{' '}
+            <strong>poll</strong> and <strong>comment</strong> thread
+            (local or Airtable, depending on env).
           </p>
         </article>
       </section>

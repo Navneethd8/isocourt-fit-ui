@@ -63,9 +63,9 @@ function scopeKey(projectSlug: string, pageId: PanePageId) {
 }
 
 /**
- * - No entry for the page: show every known kit in catalog order.
+ * - No entry for the page: “all on” in catalog order (see `usePaneLayout().displayIds` for the full row).
  * - Empty array: user hid all panes.
- * - Non-empty: that order, filtered to catalog, then any new catalog ids (from app updates) appended.
+ * - Non-empty: that order = enabled panes, filtered to catalog, then new catalog ids appended.
  */
 export function getVisiblePaneIdsForPage(
   projectSlug: string,

@@ -6,12 +6,13 @@ import { DocumentTitle } from '@/components/DocumentTitle'
 import { KitShadcnLayer } from '@/components/KitShadcnLayer'
 import { MaterialKitIcons } from '@/components/MaterialKitIcons'
 import { KitPaneBar } from '@/components/KitPaneBar'
+import { PaneKitGrid } from '@/components/PaneKitGrid'
 import { usePaneLayout } from '@/hooks/usePaneLayout'
 
 export function AnalyzePage() {
   const kits = useKits()
-  const { visibleIds } = usePaneLayout('analyze')
-  const visibleKits = useMemo(() => orderKitsById(visibleIds, kits), [visibleIds, kits])
+  const { displayIds } = usePaneLayout('analyze')
+  const visibleKits = useMemo(() => orderKitsById(displayIds, kits), [displayIds, kits])
   const [source, setSource] = useState<'upload' | 'record'>('upload')
 
   const steps = useMemo(
@@ -29,8 +30,10 @@ export function AnalyzePage() {
       <header className="page-head">
         <h1>Analyze (sample flow — IsoCourt-inspired)</h1>
         <p className="page-lede">
-          A page-shaped stub: upload vs record, staged pipeline copy, and validation language you can reuse. With a
-          non-IsoCourt project, only the shared design kits may appear in panes.
+          A page-shaped stub: upload vs record, staged pipeline copy, and validation language. The <strong>sample
+          content</strong> here is <strong>IsoCourt-specific</strong> in this lab; you still compare it across kit
+          columns. Other projects use the same route with their kits—ask if you want additional routes (e.g. a
+          different flow for UIExperiments).
         </p>
       </header>
       <KitPaneBar pageId="analyze" pageLabel="Analyze" />
@@ -39,7 +42,7 @@ export function AnalyzePage() {
           No panes visible. Turn on a design kit above to compare the flow.
         </p>
       ) : null}
-      <div className="app-grid">
+      <PaneKitGrid columnCount={visibleKits.length}>
         {visibleKits.map((kit) => {
           const {
             SegmentedControl,
@@ -58,7 +61,7 @@ export function AnalyzePage() {
                 <h2 id={`${kit.id}-panel-title`}>{kit.name}</h2>
                 <p>{kit.tagline}</p>
               </header>
-              <MaterialKitIcons kitName={kit.name} />
+              <MaterialKitIcons kitName={kit.name} kitId={kit.id} />
               <SegmentedControl
                 ariaLabel="Clip source"
                 options={[
@@ -94,7 +97,7 @@ export function AnalyzePage() {
             </DemoKitColumn>
           )
         })}
-      </div>
+      </PaneKitGrid>
     </>
   )
 }
