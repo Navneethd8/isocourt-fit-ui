@@ -1,0 +1,771 @@
+/* Abyssal sonar — no gradient(); SVG tile for grid. */
+.panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 1.25rem;
+  border: 1px solid #0c8a6e;
+  background-color: #010a0c;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath d='M0 0h1v1H0' fill='%23014d3f' fill-opacity='0.35'/%3E%3C/svg%3E");
+  background-size: 4px 4px;
+  box-shadow: inset 0 0 0 1px rgba(0, 232, 184, 0.12);
+}
+
+.panelLight {
+  position: relative;
+  border-radius: 4px;
+  padding: 1.25rem;
+  border: 1px solid #0e7490;
+  background-color: #e0f2f1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Crect width='1' height='1' x='0' y='0' fill='%23cbd5d4' fill-opacity='0.6'/%3E%3C/svg%3E");
+  background-size: 20px 20px;
+}
+
+.panel > *,
+.panelLight > * {
+  position: relative;
+  z-index: 1;
+}
+
+.root {
+  --ping: #00e8b8;
+  --warn: #f43f5e;
+  --trace: #0b6e6a;
+  --text: #ccfff5;
+  --muted: #5a9e94;
+  font-family: "IBM Plex Mono", "JetBrains Mono", ui-monospace, monospace;
+  color: var(--text);
+  font-size: 0.82rem;
+}
+
+@keyframes blip {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 232, 184, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 3px rgba(0, 232, 184, 0.15);
+  }
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border: 1px solid #0b6e6a;
+  padding: 0.4rem 0.65rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: #001812;
+  color: var(--text);
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.button:hover {
+  border-color: var(--ping);
+  background: #002820;
+}
+
+.button:focus-visible {
+  outline: 2px solid #a5f3fc;
+  outline-offset: 2px;
+}
+
+.buttonPrimary {
+  color: #001411;
+  font-weight: 800;
+  background: var(--ping);
+  border: 1px solid var(--ping);
+}
+
+.buttonPrimary:hover {
+  background: #5eead4;
+  border-color: #99f6e4;
+}
+
+.buttonPrimary:focus-visible {
+  outline: 2px solid #a5f3fc;
+  outline-offset: 2px;
+}
+
+.buttonGhost {
+  background: #001a18;
+  color: #99f6e4;
+  border-color: #0f4d4a;
+}
+
+.buttonGhost:hover {
+  background: #042f2e;
+  border-color: #14b8a6;
+}
+
+.buttonGhost:focus-visible {
+  outline: 2px solid #a5f3fc;
+  outline-offset: 2px;
+}
+
+.needle {
+  width: 0.4rem;
+  height: 0.9rem;
+  border: 1px solid #0b6e6a;
+  background: #0b6e6a;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.needle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0.15rem;
+  width: 0.15rem;
+  height: 0.4rem;
+  background: #00e8b8;
+  margin-left: -0.08rem;
+}
+
+.card {
+  position: relative;
+  background: #001a18;
+  border: 1px solid #0b6e6a;
+  padding: 0.7rem 0.75rem 0.8rem;
+  text-align: left;
+  box-shadow: 0 0 0 1px #041f1b;
+  overflow: hidden;
+}
+
+.sweep {
+  position: absolute;
+  right: -0.2rem;
+  top: 50%;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin-top: -2.25rem;
+  color: #0b6e6a;
+  pointer-events: none;
+  opacity: 0.4;
+  animation: blip 1.2s ease-in-out infinite;
+}
+
+.sweepPath {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 0.3;
+  stroke-linecap: round;
+}
+
+.sweepPath2 {
+  fill: none;
+  stroke: #00e8b8;
+  stroke-width: 0.2;
+  opacity: 0.6;
+}
+
+.hud {
+  position: absolute;
+  right: 0.35rem;
+  top: 0.3rem;
+  color: #5a9e94;
+  font-size: 0.45rem;
+  padding: 0.15rem 0.25rem;
+  border: 1px solid #0b6e6a;
+  line-height: 1;
+  pointer-events: none;
+}
+
+.title {
+  margin: 0 0 0.1rem;
+  color: #ecfeff;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  max-width: 78%;
+}
+
+.subtitle {
+  margin: 0 0 0.5rem;
+  color: #5a9e94;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  text-align: left;
+}
+
+.label {
+  text-transform: uppercase;
+  color: var(--muted);
+  font-size: 0.48rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+}
+
+.input {
+  font-size: 0.72rem;
+  font-family: inherit;
+  border: 1px solid #0b6e6a;
+  background: #000a09;
+  color: var(--text);
+  padding: 0.4rem 0.45rem;
+  outline: none;
+}
+
+.input:focus {
+  box-shadow: 0 0 0 1px #00e8b8, inset 0 0 0 1px #0b6e6a;
+}
+
+.hint {
+  font-size: 0.48rem;
+  color: #0d9488;
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  text-transform: uppercase;
+  display: inline-flex;
+  font-size: 0.45rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  padding: 0.1rem 0.28rem 0.12rem;
+  border: 1px solid #0b6e6a;
+  color: #99f6e4;
+  background: #001a18;
+}
+
+.badgeAccent {
+  border-color: #00e8b8;
+  color: #a7f3d0;
+}
+
+.badgeSuccess {
+  color: #a7f3d0;
+  background: #022c22;
+  border-color: #10b981;
+}
+
+.badgeWarning {
+  color: #fecdd3;
+  background: #2a0a0f;
+  border-color: #e11d48;
+}
+
+.segmented {
+  display: flex;
+  border: 1px solid #0b6e6a;
+  background: #000a09;
+  overflow: hidden;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  border: none;
+  border-right: 1px solid #0b6e6a;
+  padding: 0.3rem 0.45rem;
+  cursor: pointer;
+}
+
+.segmentedBtn {
+  color: #5a9e94;
+  background: #001412;
+}
+
+.segmentedBtn:last-of-type,
+.segmentedBtnActive:last-of-type {
+  border-right: none;
+}
+
+.segmentedBtn:hover {
+  color: #99f6e4;
+  background: #001f1c;
+}
+
+.segmentedBtnActive {
+  color: #001a18;
+  background: #00d9ad;
+  font-weight: 900;
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem 0.4rem;
+  border: 1px solid #0b6e6a;
+  background: #000805;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.4rem;
+}
+
+.ping,
+.pingOn,
+.pingOff {
+  width: 0.4rem;
+  height: 0.4rem;
+  border: 1px solid #0b6e6a;
+  background: #001a18;
+  border-radius: 0;
+  flex-shrink: 0;
+}
+
+.pingOn {
+  background: #00e8b8;
+  border-color: #00e8b8;
+  box-shadow: 0 0 0 1px #001a18, 0 0 0 2px #00e8b8, 0 0 4px 1px #00e8b8;
+  animation: blip 0.9s ease-in-out infinite;
+}
+
+.pingOff {
+  background: #064e3b;
+  border-color: #22c55e;
+  opacity: 0.4;
+}
+
+.stepper li {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-transform: uppercase;
+  color: #5a9e94;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.stepperItem {
+  color: #0d9488;
+}
+
+.stepperItemCurrent {
+  color: #ecfeff;
+}
+
+.stepperItemDone {
+  color: #0e7490;
+  text-decoration: line-through 1px #0b6e6a;
+  text-decoration-thickness: 1px;
+  opacity: 0.5;
+}
+
+.metric {
+  background: #001a18;
+  border: 1px solid #0b6e6a;
+  padding: 0.4rem 0.45rem;
+  font-size: 0.65rem;
+}
+
+.metricLabel {
+  text-transform: uppercase;
+  color: #5a9e94;
+  font-size: 0.4rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.1rem;
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  color: #ecfeff;
+  font-size: 0.88rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.metricValuePositive {
+  color: #2dd4bf;
+}
+
+.metricValueNegative {
+  color: #fb7185;
+}
+
+.metricSub {
+  color: #0d9488;
+  font-size: 0.48rem;
+  margin-top: 0.08rem;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  text-transform: uppercase;
+  line-height: 1.4;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 0.4rem 0.45rem;
+  border: 1px solid #0b6e6a;
+  color: #99f6e4;
+  background: #001a18;
+}
+
+.calloutTip {
+  color: #022c22;
+  background: #2dd4bf;
+  border-color: #0f766e;
+}
+
+.calloutInfo {
+  color: #cffafe;
+  background: #0c4a6e;
+  border-color: #0ea5e9;
+}
+
+.calloutWarning {
+  color: #fff1f2;
+  background: #881337;
+  border-color: #f43f5e;
+}
+
+.calloutTitle {
+  text-transform: uppercase;
+  color: inherit;
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin: 0 0 0.15rem;
+  opacity: 0.85;
+}
+
+.callout.calloutTip .calloutTitle,
+.callout.calloutInfo .calloutTitle,
+.callout.calloutWarning .calloutTitle {
+  color: inherit;
+  opacity: 0.6;
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  text-transform: uppercase;
+  color: #5a9e94;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.4rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.2rem;
+}
+
+.progressTrack {
+  height: 3px;
+  background: #000805;
+  border: 1px solid #0b6e6a;
+  overflow: hidden;
+}
+
+.progressFill {
+  width: 0;
+  height: 100%;
+  background: #00e8b8;
+  border-right: 1px solid #99f6e4;
+  transition: width 0.35s ease;
+}
+
+:global(.demo-panel--light) .root {
+  --ping: #0d9488;
+  --warn: #be123c;
+  --trace: #0f766e;
+  --text: #0f172a;
+  --muted: #475569;
+  color: #0f172a;
+}
+
+:global(.demo-panel--light).panelLight {
+  border-color: #99f6e4;
+  background-color: #ecfeff;
+}
+
+:global(.demo-panel--light) .card {
+  background: #ffffff;
+  border: 1px solid #a5f3fc;
+  box-shadow: 0 1px 0 #e0f2fe, 0 10px 28px rgba(8, 145, 178, 0.08);
+}
+
+:global(.demo-panel--light) .title {
+  color: #042f2e;
+}
+
+:global(.demo-panel--light) .subtitle,
+:global(.demo-panel--light) .label,
+:global(.demo-panel--light) .hint,
+:global(.demo-panel--light) .metricLabel,
+:global(.demo-panel--light) .metricSub,
+:global(.demo-panel--light) .progressLabel {
+  color: #0f766e;
+}
+
+:global(.demo-panel--light) .button {
+  background: #ffffff;
+  color: #134e4a;
+  border: 1px solid #99f6e4;
+}
+
+:global(.demo-panel--light) .button:hover {
+  background: #f0fdfa;
+  border-color: #2dd4bf;
+}
+
+:global(.demo-panel--light) .buttonPrimary {
+  background: #0d9488;
+  color: #f0fdfa;
+  border: 1px solid #0f766e;
+}
+
+:global(.demo-panel--light) .buttonPrimary:hover {
+  background: #0f766e;
+  border-color: #115e59;
+}
+
+:global(.demo-panel--light) .buttonGhost {
+  background: transparent;
+  color: #0f766e;
+  border: 1px dashed #5eead4;
+}
+
+:global(.demo-panel--light) .buttonGhost:hover {
+  background: #f0fdfa;
+  border-style: solid;
+  color: #042f2e;
+}
+
+:global(.demo-panel--light) .button:focus-visible,
+:global(.demo-panel--light) .buttonPrimary:focus-visible,
+:global(.demo-panel--light) .buttonGhost:focus-visible {
+  outline: 2px solid #0e7490;
+  outline-offset: 2px;
+}
+
+:global(.demo-panel--light) .needle {
+  border-color: #14b8a6;
+  background: #ccfbf1;
+}
+
+:global(.demo-panel--light) .needle::after {
+  background: #0d9488;
+}
+
+:global(.demo-panel--light) .input {
+  background: #ffffff;
+  color: #042f2e;
+  border: 1px solid #99f6e4;
+}
+
+:global(.demo-panel--light) .input:focus {
+  box-shadow: 0 0 0 1px #0d9488;
+}
+
+:global(.demo-panel--light) .badge {
+  background: #f0fdfa;
+  color: #134e4a;
+  border-color: #99f6e4;
+}
+
+:global(.demo-panel--light) .badgeAccent {
+  background: #ecfeff;
+  color: #0e7490;
+  border-color: #22d3ee;
+}
+
+:global(.demo-panel--light) .badgeSuccess {
+  background: #ecfdf5;
+  color: #166534;
+  border-color: #6ee7b7;
+}
+
+:global(.demo-panel--light) .badgeWarning {
+  background: #fff1f2;
+  color: #9f1239;
+  border-color: #fda4af;
+}
+
+:global(.demo-panel--light) .segmented {
+  background: #ffffff;
+  border: 1px solid #99f6e4;
+}
+
+:global(.demo-panel--light) .segmentedBtn {
+  color: #0f766e;
+  background: #ffffff;
+  border-right-color: #ccfbf1;
+}
+
+:global(.demo-panel--light) .segmentedBtn:hover {
+  color: #042f2e;
+  background: #f0fdfa;
+}
+
+:global(.demo-panel--light) .segmentedBtnActive {
+  background: #ccfbf1;
+  color: #042f2e;
+  border-right-color: #99f6e4;
+}
+
+:global(.demo-panel--light) .stepper {
+  background: #f0fdfa;
+  border: 1px solid #99f6e4;
+}
+
+:global(.demo-panel--light) .stepperItem {
+  color: #0f766e;
+}
+
+:global(.demo-panel--light) .stepperItemCurrent {
+  color: #042f2e;
+}
+
+:global(.demo-panel--light) .metric {
+  background: #ffffff;
+  border: 1px solid #99f6e4;
+}
+
+:global(.demo-panel--light) .metricValue,
+:global(.demo-panel--light) .metricValuePositive,
+:global(.demo-panel--light) .metricValueNegative {
+  color: #042f2e;
+}
+
+:global(.demo-panel--light) .metricValuePositive {
+  color: #0f766e;
+}
+
+:global(.demo-panel--light) .metricValueNegative {
+  color: #be123c;
+}
+
+:global(.demo-panel--light) .sweep {
+  color: #22d3ee;
+  opacity: 0.4;
+}
+
+:global(.demo-panel--light) .sweepPath2 {
+  stroke: #0d9488;
+}
+
+:global(.demo-panel--light) .hud {
+  color: #0f766e;
+  border-color: #5eead4;
+  background: #f0fdfa;
+}
+
+:global(.demo-panel--light) .callout {
+  background: #f8fafc;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+}
+
+:global(.demo-panel--light) .calloutTip {
+  background: #ccfbf1;
+  color: #042f2e;
+  border-color: #5eead4;
+}
+
+:global(.demo-panel--light) .calloutInfo {
+  background: #eff6ff;
+  color: #1e40af;
+  border-color: #93c5fd;
+}
+
+:global(.demo-panel--light) .calloutWarning {
+  background: #fff1f2;
+  color: #9f1239;
+  border-color: #fda4af;
+}
+
+:global(.demo-panel--light) .progressTrack {
+  background: #e0f2fe;
+  border-color: #99f6e4;
+}
+
+:global(.demo-panel--light) .progressFill {
+  background: #0d9488;
+  border-right-color: #ccfbf1;
+}
+
+:global(html.dark) .panel {
+  border-color: #115e59;
+  box-shadow: inset 0 0 0 1px rgba(45, 212, 191, 0.12);
+}
+
+:global(html.dark) .card {
+  border-color: #134e4a;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45);
+}
+
+:global(html.dark) .badge {
+  background: #042f2e;
+  color: #ccfbf1;
+  border-color: #115e59;
+}
+
+:global(html.dark) .badgeAccent {
+  background: #022c22;
+  color: #ecfdf5;
+  border-color: #2dd4bf;
+}
+
+:global(html.dark) .badgeSuccess {
+  background: #022c22;
+  color: #a7f3d0;
+  border-color: #34d399;
+}
+
+:global(html.dark) .badgeWarning {
+  background: #3f0a14;
+  color: #fecdd3;
+  border-color: #fb7185;
+}
+
+:global(html.dark) .button,
+:global(html.dark) .buttonGhost,
+:global(html.dark) .buttonPrimary {
+  border-color: #0f766e;
+}
+
+:global(html.dark) .buttonPrimary:hover {
+  border-color: #5eead4;
+}
+
+:global(html.dark) .button:focus-visible,
+:global(html.dark) .buttonPrimary:focus-visible,
+:global(html.dark) .buttonGhost:focus-visible {
+  outline: 2px solid #67e8f9;
+  outline-offset: 2px;
+}
+
+:global(html.dark) .subtitle,
+:global(html.dark) .hint,
+:global(html.dark) .metricSub,
+:global(html.dark) .progressLabel {
+  color: #5eead4;
+}
