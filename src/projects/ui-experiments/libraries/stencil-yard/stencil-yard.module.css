@@ -1,0 +1,585 @@
+.root {
+  --void: #0f0f0f;
+  --concrete: #d6d2ca;
+  --fog: #6b6b6b;
+  --hazard: #e11d48;
+  font-family: "DIN Condensed", "Arial Narrow", "Helvetica Condensed", Arial, sans-serif;
+  letter-spacing: 0.04em;
+  color: var(--void);
+}
+
+@keyframes nudgeX {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 800;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  padding: 0.45rem 0.75rem;
+  cursor: pointer;
+  border-radius: 0;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.button {
+  background: #fff;
+  color: var(--void);
+  border: 3px solid var(--void);
+  box-shadow: 3px 3px 0 var(--void);
+}
+
+.button:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 var(--void);
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--hazard);
+  outline-offset: 2px;
+}
+
+.cross {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  margin-left: 0.35rem;
+  vertical-align: -0.08em;
+  flex-shrink: 0;
+}
+
+.buttonPrimary {
+  background: var(--hazard);
+  color: #fff;
+  border: 3px solid var(--void);
+  box-shadow: 4px 4px 0 var(--void);
+}
+
+.buttonPrimary:hover {
+  transform: translate(-1px, -1px);
+  animation: nudgeX 0.35s ease;
+}
+
+.buttonPrimary:focus-visible {
+  outline: 2px solid var(--void);
+  outline-offset: 3px;
+}
+
+.buttonGhost {
+  background: transparent;
+  color: var(--void);
+  border: 3px solid transparent;
+  text-decoration: underline 2px;
+  text-underline-offset: 4px;
+  box-shadow: none;
+}
+
+.buttonGhost:hover {
+  background: #fff;
+  border-color: var(--void);
+  text-decoration: none;
+  box-shadow: 3px 3px 0 #ccc;
+}
+
+.buttonGhost:focus-visible {
+  outline: 2px solid var(--hazard);
+  outline-offset: 2px;
+}
+
+/* hazard stripe: SVG data URL, solid colors only (no CSS gradients) */
+.card {
+  position: relative;
+  background: #f4f1eb;
+  border: 3px solid var(--void);
+  padding: 0.5rem 0.65rem 0.85rem;
+  text-align: left;
+  box-shadow: 6px 6px 0 0 #000;
+  background-clip: padding-box;
+}
+
+.cardHazard {
+  position: relative;
+  height: 6px;
+  width: 100%;
+  background-color: #111;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Crect width='6' height='6' fill='%23facc15'/%3E%3Crect x='6' y='6' width='6' height='6' fill='%23facc15'/%3E%3C/svg%3E");
+  background-size: 12px 12px;
+  border-bottom: 2px solid var(--void);
+  margin: -0.5rem -0.65rem 0.65rem;
+  width: calc(100% + 1.3rem);
+}
+
+.deco {
+  position: absolute;
+  right: 0.4rem;
+  top: 2.5rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: #999;
+  pointer-events: none;
+  opacity: 0.65;
+}
+
+.title {
+  margin: 0 0 0.1rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+}
+
+.subtitle {
+  margin: 0 0 0.55rem;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  color: #444;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  color: #1a1a1a;
+}
+
+.input {
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  padding: 0.4rem 0.5rem;
+  border: 3px solid var(--void);
+  background: #fff;
+  color: var(--void);
+  border-radius: 0;
+  outline: none;
+}
+
+.input:focus {
+  background: #fffbeb;
+  box-shadow: 3px 3px 0 var(--hazard);
+}
+
+.hint {
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fog);
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+  padding: 0.18rem 0.4rem;
+  border: 2px solid var(--void);
+  border-radius: 0;
+}
+
+.badge {
+  background: #fff;
+  color: #333;
+}
+
+.badgeAccent {
+  background: #111;
+  color: #f5f5f4;
+  border-color: #111;
+}
+
+.badgeSuccess {
+  background: #a7f3d0;
+  color: #064e3b;
+  border-color: #064e3b;
+}
+
+.badgeWarning {
+  background: #fde68a;
+  color: #78350f;
+  border-color: #a16207;
+}
+
+.segmented {
+  display: flex;
+  flex-wrap: wrap;
+  border: 3px solid var(--void);
+  background: #e7e3da;
+  gap: 0;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  font-family: inherit;
+  text-transform: uppercase;
+  font-size: 0.58rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  padding: 0.35rem 0.5rem;
+  border: none;
+  border-right: 3px solid var(--void);
+  cursor: pointer;
+}
+
+.segmentedBtn {
+  background: #e7e3da;
+  color: #444;
+}
+
+.segmentedBtn:last-of-type,
+.segmentedBtnActive:last-of-type {
+  border-right: none;
+}
+
+.segmentedBtn:hover {
+  color: #000;
+  background: #fff;
+}
+
+.segmentedBtnActive {
+  background: #000;
+  color: #f5f4f0;
+  border-color: #000;
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.4rem;
+  align-items: center;
+  text-transform: uppercase;
+  font-size: 0.55rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.stepper li + li::before {
+  content: "▸";
+  margin-right: 0.25rem;
+  color: #9ca3af;
+  font-size: 0.45rem;
+  font-weight: 700;
+}
+
+.stepperItem,
+.stepperItemCurrent,
+.stepperItemDone {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #6b6b6b;
+}
+
+.stepperItemCurrent {
+  color: #000;
+}
+
+.stepperItemDone {
+  color: #0f5132;
+}
+
+.metric {
+  background: #fff;
+  border: 3px solid #000;
+  padding: 0.45rem 0.5rem;
+  text-transform: uppercase;
+}
+
+.metricLabel {
+  font-size: 0.5rem;
+  color: #6b6b6b;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  margin-bottom: 0.1rem;
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.metricValue {
+  color: #000;
+}
+
+.metricValuePositive {
+  color: #0f5132;
+}
+
+.metricValueNegative {
+  color: #9f1239;
+}
+
+.metricSub {
+  font-size: 0.5rem;
+  color: #6b6b6b;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  margin-top: 0.15rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  line-height: 1.5;
+  padding: 0.45rem 0.5rem;
+  border: 2px solid #000;
+  background: #fafaf9;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.calloutTip {
+  background: #fff1f2;
+  border-color: #e11d48;
+  border-width: 3px;
+}
+
+.calloutInfo {
+  background: #e0f2fe;
+  border-color: #0369a1;
+  color: #0c4a6e;
+}
+
+.calloutWarning {
+  background: #ffedd5;
+  border-color: #9a3412;
+  color: #7c2d12;
+}
+
+.calloutTitle {
+  margin: 0 0 0.25rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+}
+
+.progress {
+  width: 100%;
+  text-transform: uppercase;
+  font-size: 0.5rem;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  color: #444;
+  margin-bottom: 0.3rem;
+}
+
+.progressTrack {
+  height: 12px;
+  border: 3px solid #000;
+  background: #e5e0d4;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: #000;
+  border-right: 1px solid #facc15;
+  transition: width 0.35s ease;
+}
+
+:global(html.dark) .root {
+  --void: #fafafa;
+  --concrete: #3f3f46;
+  --fog: #a1a1aa;
+  --hazard: #fb7185;
+  color: #e4e4e7;
+}
+
+:global(html.dark) .button {
+  background: #27272a;
+  color: #fafafa;
+  border-color: #fafafa;
+  box-shadow: 3px 3px 0 #fafafa;
+}
+
+:global(html.dark) .button:hover {
+  box-shadow: 4px 4px 0 #d4d4d8;
+}
+
+:global(html.dark) .buttonPrimary {
+  background: #fb7185;
+  color: #450a0a;
+  border-color: #ffe4e6;
+  box-shadow: 4px 4px 0 #18181b;
+}
+
+:global(html.dark) .buttonGhost {
+  color: #d4d4d8;
+}
+
+:global(html.dark) .buttonGhost:hover {
+  background: #27272a;
+  border-color: #fafafa;
+  box-shadow: 3px 3px 0 #52525b;
+}
+
+:global(html.dark) .card {
+  background: #18181b;
+  border-color: #fafafa;
+  box-shadow: 6px 6px 0 #27272a;
+}
+
+:global(html.dark) .title {
+  color: #fafafa;
+}
+
+:global(html.dark) .subtitle,
+:global(html.dark) .hint,
+:global(html.dark) .metricLabel,
+:global(html.dark) .metricSub,
+:global(html.dark) .progressLabel {
+  color: #a1a1aa;
+}
+
+:global(html.dark) .label {
+  color: #d4d4d8;
+}
+
+:global(html.dark) .input {
+  background: #09090b;
+  color: #fafafa;
+  border-color: #fafafa;
+}
+
+:global(html.dark) .input:focus {
+  box-shadow: 3px 3px 0 #f97316;
+}
+
+:global(html.dark) .metric {
+  background: #09090b;
+  border-color: #e4e4e7;
+}
+
+:global(html.dark) .metricValue {
+  color: #fafafa;
+}
+
+:global(html.dark) .badge {
+  background: #27272a;
+  color: #e4e4e7;
+  border-color: #52525b;
+}
+
+:global(html.dark) .badgeAccent {
+  background: #fafafa;
+  color: #18181b;
+  border-color: #fafafa;
+}
+
+:global(html.dark) .badgeSuccess {
+  background: #064e3b;
+  color: #a7f3d0;
+  border-color: #34d399;
+}
+
+:global(html.dark) .badgeWarning {
+  background: #713f12;
+  color: #fef9c3;
+  border-color: #fbbf24;
+}
+
+:global(html.dark) .segmented {
+  background: #18181b;
+  border-color: #fafafa;
+}
+
+:global(html.dark) .segmentedBtn {
+  background: #18181b;
+  color: #a1a1aa;
+}
+
+:global(html.dark) .segmentedBtn:hover {
+  color: #fafafa;
+}
+
+:global(html.dark) .segmentedBtnActive {
+  background: #fafafa;
+  color: #09090b;
+}
+
+:global(html.dark) .callout {
+  background: #27272a;
+  color: #e4e4e7;
+  border-color: #52525b;
+}
+
+:global(html.dark) .calloutTip {
+  background: #3f0a14;
+  border-color: #fb7185;
+  color: #ffe4e6;
+}
+
+:global(html.dark) .calloutInfo {
+  background: #0c2a3a;
+  color: #bae6fd;
+}
+
+:global(html.dark) .calloutWarning {
+  background: #422006;
+  color: #ffedd5;
+}
+
+:global(html.dark) .progressTrack {
+  background: #27272a;
+  border-color: #fafafa;
+}
+
+:global(html.dark) .progressFill {
+  background: #fafafa;
+  border-right-color: #facc15;
+}
+
+:global(html.dark) .button:focus-visible {
+  outline: 2px solid #fb7185;
+  outline-offset: 2px;
+}
+
+:global(html.dark) .buttonPrimary:focus-visible {
+  outline: 2px solid #fafafa;
+  outline-offset: 3px;
+}
+
+:global(html.dark) .buttonGhost:focus-visible {
+  outline: 2px solid #fb7185;
+  outline-offset: 2px;
+}
