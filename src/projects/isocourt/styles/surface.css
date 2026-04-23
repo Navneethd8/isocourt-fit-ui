@@ -1,0 +1,185 @@
+/*
+  Brand ramps (constant). Semantic UI tokens live on html[data-color-mode] below.
+*/
+:root {
+  --iso-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display',
+    system-ui, sans-serif;
+
+  --iso-neutral-950: #0a0a0a;
+  --iso-neutral-900: #171717;
+  --iso-neutral-800: #262626;
+  --iso-neutral-700: #404040;
+  --iso-neutral-600: #525252;
+  --iso-neutral-400: #a3a3a3;
+  --iso-neutral-200: #e5e5e5;
+  --iso-neutral-100: #f5f5f5;
+
+  --iso-emerald-950: #022c22;
+  --iso-emerald-800: #065f46;
+  --iso-emerald-700: #047857;
+  --iso-emerald-600: #059669;
+  --iso-emerald-500: #10b981;
+  --iso-emerald-400: #34d399;
+  --iso-emerald-300: #6ee7b7;
+
+  --iso-rose-600: #e11d48;
+  --iso-rose-500: #f43f5e;
+  --iso-rose-400: #fb7185;
+  --iso-rose-300: #fda4af;
+
+  --iso-amber-600: #d97706;
+  --iso-amber-500: #f59e0b;
+  --iso-amber-400: #fbbf24;
+
+  --iso-sky-500: #0ea5e9;
+  --iso-sky-400: #38bdf8;
+
+  --iso-purple-500: #a855f7;
+  --iso-purple-400: #c084fc;
+
+  /* Readable on forced-dark demo columns (chalk / production) in any global theme */
+  --iso-stage-heading: #f4f4f5;
+  --iso-stage-muted: rgba(228, 228, 231, 0.88);
+}
+
+/* ----- Light UI (explicit + system fallback default) ----- */
+html[data-color-mode='light'],
+html[data-color-mode='system'] {
+  --iso-canvas: var(--iso-neutral-100);
+  --iso-elevated: #ffffff;
+  --iso-muted-surface: #f4f4f5;
+  --iso-muted-surface-2: #f8fafc;
+  --iso-text: var(--iso-neutral-900);
+  --iso-text-muted: var(--iso-neutral-600);
+  --iso-border: var(--iso-neutral-200);
+  --iso-border-strong: var(--iso-neutral-800);
+  --iso-border-hover: #d4d4d8;
+  --iso-paper: #f0f1ef;
+  --iso-shelf: #ffffff;
+  --iso-shelf-border: #e4e4e7;
+  --iso-demo-dark-ring: rgba(15, 23, 42, 0.14);
+  --iso-chalk-panel-border: rgba(15, 23, 42, 0.18);
+  --iso-sketch-shadow: rgba(10, 10, 10, 0.1);
+  --iso-sketch-inset: rgba(10, 10, 10, 0.05);
+  --iso-card-shadow: rgba(15, 23, 42, 0.06);
+  --iso-card-shadow-strong: rgba(15, 23, 42, 0.04);
+  --iso-hover-tint: rgba(0, 0, 0, 0.04);
+  --iso-code-bg: var(--iso-neutral-200);
+  --iso-link-hover: var(--iso-emerald-600);
+
+  --iso-emerald-soft: rgba(16, 185, 129, 0.14);
+  --iso-rose-soft: rgba(244, 63, 94, 0.14);
+  --iso-amber-soft: rgba(245, 158, 11, 0.16);
+
+  --iso-badge-neutral-bg: #eceff3;
+  --iso-badge-neutral-fg: var(--iso-neutral-900);
+  --iso-badge-success-bg: #ecfdf5;
+  --iso-badge-success-fg: #065f46;
+  --iso-badge-success-border: #6ee7b7;
+  --iso-badge-warning-bg: #fffbeb;
+  --iso-badge-warning-fg: #92400e;
+  --iso-badge-warning-border: #fcd34d;
+
+  --iso-rose-on-elevated: var(--iso-rose-600);
+  --iso-chalk-board: var(--iso-neutral-950);
+  --iso-foot-link: var(--iso-emerald-700);
+
+  --iso-callout-info-bg: rgba(14, 165, 233, 0.09);
+  --iso-callout-info-border: rgba(56, 189, 248, 0.38);
+
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html[data-color-mode='system'] {
+    --iso-canvas: var(--iso-neutral-950);
+    --iso-elevated: #171717;
+    --iso-muted-surface: #262626;
+    --iso-muted-surface-2: #1f1f1f;
+    --iso-text: var(--iso-neutral-100);
+    --iso-text-muted: var(--iso-neutral-400);
+    --iso-border: #2f2f2f;
+    --iso-border-strong: #525252;
+    --iso-border-hover: #404040;
+    --iso-paper: #1e1e22;
+    --iso-shelf: #161618;
+    --iso-shelf-border: #27272a;
+    --iso-demo-dark-ring: rgba(255, 255, 255, 0.1);
+    --iso-chalk-panel-border: rgba(255, 255, 255, 0.14);
+    --iso-sketch-shadow: rgba(0, 0, 0, 0.45);
+    --iso-sketch-inset: rgba(255, 255, 255, 0.04);
+    --iso-card-shadow: rgba(0, 0, 0, 0.35);
+    --iso-card-shadow-strong: rgba(0, 0, 0, 0.25);
+    --iso-hover-tint: rgba(255, 255, 255, 0.06);
+    --iso-code-bg: var(--iso-neutral-800);
+    --iso-link-hover: var(--iso-emerald-400);
+
+    --iso-emerald-soft: rgba(52, 211, 153, 0.22);
+    --iso-rose-soft: rgba(244, 63, 94, 0.22);
+    --iso-amber-soft: rgba(245, 158, 11, 0.22);
+
+    --iso-badge-neutral-bg: #2a2a2a;
+    --iso-badge-neutral-fg: var(--iso-neutral-100);
+    --iso-badge-success-bg: rgba(6, 95, 70, 0.35);
+    --iso-badge-success-fg: var(--iso-emerald-300);
+    --iso-badge-success-border: rgba(52, 211, 153, 0.45);
+    --iso-badge-warning-bg: rgba(120, 53, 15, 0.35);
+    --iso-badge-warning-fg: #fcd34d;
+    --iso-badge-warning-border: rgba(251, 191, 36, 0.45);
+
+    --iso-rose-on-elevated: var(--iso-rose-400);
+    --iso-chalk-board: #141414;
+    --iso-foot-link: var(--iso-emerald-400);
+
+    --iso-callout-info-bg: rgba(8, 47, 73, 0.62);
+    --iso-callout-info-border: rgba(125, 211, 252, 0.38);
+
+    color-scheme: dark;
+  }
+}
+
+html[data-color-mode='dark'] {
+  --iso-canvas: var(--iso-neutral-950);
+  --iso-elevated: #171717;
+  --iso-muted-surface: #262626;
+  --iso-muted-surface-2: #1f1f1f;
+  --iso-text: var(--iso-neutral-100);
+  --iso-text-muted: var(--iso-neutral-400);
+  --iso-border: #2f2f2f;
+  --iso-border-strong: #525252;
+  --iso-border-hover: #404040;
+  --iso-paper: #1e1e22;
+  --iso-shelf: #161618;
+  --iso-shelf-border: #27272a;
+  --iso-demo-dark-ring: rgba(255, 255, 255, 0.1);
+  --iso-chalk-panel-border: rgba(255, 255, 255, 0.14);
+  --iso-sketch-shadow: rgba(0, 0, 0, 0.45);
+  --iso-sketch-inset: rgba(255, 255, 255, 0.04);
+  --iso-card-shadow: rgba(0, 0, 0, 0.35);
+  --iso-card-shadow-strong: rgba(0, 0, 0, 0.25);
+  --iso-hover-tint: rgba(255, 255, 255, 0.06);
+  --iso-code-bg: var(--iso-neutral-800);
+  --iso-link-hover: var(--iso-emerald-400);
+
+  --iso-emerald-soft: rgba(52, 211, 153, 0.22);
+  --iso-rose-soft: rgba(244, 63, 94, 0.22);
+  --iso-amber-soft: rgba(245, 158, 11, 0.22);
+
+  --iso-badge-neutral-bg: #2a2a2a;
+  --iso-badge-neutral-fg: var(--iso-neutral-100);
+  --iso-badge-success-bg: rgba(6, 95, 70, 0.35);
+  --iso-badge-success-fg: var(--iso-emerald-300);
+  --iso-badge-success-border: rgba(52, 211, 153, 0.45);
+  --iso-badge-warning-bg: rgba(120, 53, 15, 0.35);
+  --iso-badge-warning-fg: #fcd34d;
+  --iso-badge-warning-border: rgba(251, 191, 36, 0.45);
+
+  --iso-rose-on-elevated: var(--iso-rose-400);
+  --iso-chalk-board: #141414;
+  --iso-foot-link: var(--iso-emerald-400);
+
+  --iso-callout-info-bg: rgba(8, 47, 73, 0.62);
+  --iso-callout-info-border: rgba(125, 211, 252, 0.38);
+
+  color-scheme: dark;
+}

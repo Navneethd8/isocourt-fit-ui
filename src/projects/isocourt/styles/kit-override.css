@@ -1,0 +1,4 @@
+/* IsoCourt project: font override for the “current-site” product column (imported with this project’s styles). */
+.demo-panel[data-kit-id='current-site'] {
+  --iso-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
