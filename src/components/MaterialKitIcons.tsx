@@ -1,9 +1,11 @@
 import { useProject } from '@/context/ProjectContext'
 import { ISOCOURT_PROJECT_SLUG } from '@/projects/isocourt'
+import { SWECC_UI_EXPERIMENTATION_PROJECT_SLUG } from '@/projects/swecc-ui-experimentation/project'
 import { UI_EXPERIMENTS_PROJECT_SLUG } from '@/projects/ui-experiments'
 import {
   defaultLabIconRow,
   productFlowIconRow,
+  sweccKitIconRows,
   uiExperimentsKitIconRows,
   type LabIconComponent,
 } from '@/components/materialKitIconRegistry'
@@ -21,6 +23,12 @@ function pickIconRow(projectSlug: string, kitId: string | undefined): LabIconCom
   if (projectSlug === UI_EXPERIMENTS_PROJECT_SLUG) {
     if (kitId && uiExperimentsKitIconRows[kitId]) {
       return uiExperimentsKitIconRows[kitId]!
+    }
+    return defaultLabIconRow
+  }
+  if (projectSlug === SWECC_UI_EXPERIMENTATION_PROJECT_SLUG) {
+    if (kitId && sweccKitIconRows[kitId]) {
+      return sweccKitIconRows[kitId]!
     }
     return defaultLabIconRow
   }
