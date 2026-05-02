@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react'
 import { orderKitsById } from '@/kits'
 import { DemoKitColumn } from '@/components/DemoKitColumn'
 import { DocumentTitle } from '@/components/DocumentTitle'
-import { KitShadcnLayer } from '@/components/KitShadcnLayer'
 import { MaterialKitIcons } from '@/components/MaterialKitIcons'
 import { KitPaneBar } from '@/components/KitPaneBar'
 import { PaneKitGrid } from '@/components/PaneKitGrid'
@@ -55,6 +54,7 @@ export function AnalyzePage() {
             TextField,
             Badge,
           } = kit
+          const isSweccKit = kit.id.startsWith('swecc-')
           return (
             <DemoKitColumn key={kit.id} kit={kit}>
               <header className="demo-header">
@@ -77,23 +77,62 @@ export function AnalyzePage() {
                 <Metric label="Pose detection" value="78.4%" tone="positive" subvalue="Above noise floor" />
                 <Metric label="Overhead read" value="41.2%" tone="negative" subvalue="Needs clearer angle" />
               </div>
-              <Callout title="Tip" variant="tip">
-                For full-game analysis, upload each rally or quarter separately. This keeps pose tracks stable and
-                scores comparable.
+              <Callout
+                title={isSweccKit ? 'Peer tip' : 'Tip'}
+                variant="tip"
+              >
+                {isSweccKit ? (
+                  <>
+                    Bring a resume draft or a job posting to mentor night—even rough bullets help mentors steer you
+                    faster than a blank page.
+                  </>
+                ) : (
+                  <>
+                    For full-game analysis, upload each rally or quarter separately. This keeps pose tracks stable and
+                    scores comparable.
+                  </>
+                )}
               </Callout>
-              <Card title="Clip status" subtitle={source === 'upload' ? 'File queued' : 'Camera preview armed'}>
+              <Card
+                title={isSweccKit ? 'Workshop prep' : 'Clip status'}
+                subtitle={
+                  isSweccKit
+                    ? source === 'upload'
+                      ? 'Resume PDF queued for review'
+                      : 'Mock interview slot held'
+                    : source === 'upload'
+                      ? 'File queued'
+                      : 'Camera preview armed'
+                }
+              >
                 <p className="demo-copy">
-                  <Badge tone="success">Clip ready to analyze</Badge> when validation passes — same language as the
-                  live analyze view.
+                  {isSweccKit ? (
+                    <>
+                      <Badge tone="accent">Peer review</Badge> when you sign up for a circle—officers match you with a
+                      mentor who has been where you want to go.
+                    </>
+                  ) : (
+                    <>
+                      <Badge tone="success">Clip ready to analyze</Badge> when validation passes — same language as the
+                      live analyze view.
+                    </>
+                  )}
                 </p>
               </Card>
-              <TextField label="Session label" placeholder="e.g. Smash practice — cam 1" hint="Optional; helps you find reruns." />
+              <TextField
+                label={isSweccKit ? 'What you want feedback on' : 'Session label'}
+                placeholder={isSweccKit ? 'e.g. Internship cold outreach, system design stories' : 'e.g. Smash practice — cam 1'}
+                hint={
+                  isSweccKit
+                    ? 'Helps mentors prep examples before you meet.'
+                    : 'Optional; helps you find reruns.'
+                }
+              />
               <div className="demo-actions">
-                <Button variant="primary">Analyze stroke</Button>
-                <Button variant="secondary">Save draft</Button>
-                <Button variant="ghost">Open history</Button>
+                <Button variant="primary">{isSweccKit ? 'Save RSVP' : 'Analyze stroke'}</Button>
+                <Button variant="secondary">{isSweccKit ? 'Email question' : 'Save draft'}</Button>
+                <Button variant="ghost">{isSweccKit ? 'Browse workshops' : 'Open history'}</Button>
               </div>
-              <KitShadcnLayer />
             </DemoKitColumn>
           )
         })}

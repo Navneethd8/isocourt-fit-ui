@@ -3,7 +3,6 @@ import { useMemo, useState } from 'react'
 import { orderKitsById } from '@/kits'
 import { DemoKitColumn } from '@/components/DemoKitColumn'
 import { DocumentTitle } from '@/components/DocumentTitle'
-import { KitShadcnLayer } from '@/components/KitShadcnLayer'
 import { MaterialKitIcons } from '@/components/MaterialKitIcons'
 import { KitPaneBar } from '@/components/KitPaneBar'
 import { PaneKitGrid } from '@/components/PaneKitGrid'
@@ -44,6 +43,7 @@ export function LivePage() {
       <PaneKitGrid columnCount={visibleKits.length}>
         {visibleKits.map((kit) => {
           const { SegmentedControl, Stepper, Metric, Callout, ProgressBar, Button, Card, Badge } = kit
+          const isSweccKit = kit.id.startsWith('swecc-')
           return (
             <DemoKitColumn key={kit.id} kit={kit}>
               <header className="demo-header">
@@ -74,24 +74,30 @@ export function LivePage() {
               {session === 'connecting' ? (
                 <Callout variant="warning">If the API returns 503, show capacity messaging and offer retry — same shape as the live client.</Callout>
               ) : null}
-              <Card title="Live session" subtitle="WebSocket + camera">
+              <Card
+                title={isSweccKit ? 'Community room' : 'Live session'}
+                subtitle={isSweccKit ? 'Discord voice · officer on duty' : 'WebSocket + camera'}
+              >
                 <p className="demo-copy">
-                  <Badge>Session</Badge>{' '}
+                  <Badge>{isSweccKit ? 'Hangout' : 'Session'}</Badge>{' '}
                   <Badge tone={session === 'live' ? 'success' : 'neutral'}>
-                    {session === 'live' ? 'Frames flowing' : 'Waiting'}
+                    {session === 'live'
+                      ? isSweccKit
+                        ? 'Mentor available'
+                        : 'Frames flowing'
+                      : 'Waiting'}
                   </Badge>
                 </p>
               </Card>
               <div className="demo-actions">
                 <Button variant="primary" onClick={() => setSession('live')}>
-                  Start stream
+                  {isSweccKit ? 'Join voice' : 'Start stream'}
                 </Button>
                 <Button variant="secondary" onClick={() => setSession('idle')}>
-                  End session
+                  {isSweccKit ? 'Leave quietly' : 'End session'}
                 </Button>
-                <Button variant="ghost">Diagnostics</Button>
+                <Button variant="ghost">{isSweccKit ? 'Code of conduct' : 'Diagnostics'}</Button>
               </div>
-              <KitShadcnLayer />
             </DemoKitColumn>
           )
         })}
