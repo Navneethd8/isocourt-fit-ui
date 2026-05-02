@@ -1,0 +1,53 @@
+.light {
+  box-shadow: inset 0 -1px 0 rgba(20, 56, 40, 0.12);
+}
+
+.dark {
+  box-shadow: inset 0 -1px 0 rgba(168, 220, 136, 0.08);
+}
+
+.waveBack {
+  animation: bd-wave-drift 14s linear infinite;
+}
+
+.waveFront {
+  animation: bd-wave-drift 9s linear infinite reverse;
+}
+
+.bob {
+  animation: bd-bob 3.2s ease-in-out infinite;
+  transform-origin: 200px 108px;
+}
+
+.sparkle {
+  animation: bd-twinkle 4s ease-in-out infinite;
+}
+
+@keyframes bd-wave-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-48px);
+  }
+}
+
+@keyframes bd-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes bd-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
+}

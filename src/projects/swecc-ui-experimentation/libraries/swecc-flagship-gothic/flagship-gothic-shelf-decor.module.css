@@ -1,0 +1,100 @@
+.light {
+  box-shadow:
+    inset 0 -1px 0 rgba(168, 67, 56, 0.12),
+    inset 0 1px 0 rgba(124, 58, 237, 0.12);
+}
+
+.dark {
+  box-shadow:
+    inset 0 -1px 0 rgba(197, 106, 92, 0.1),
+    inset 0 1px 0 rgba(167, 139, 250, 0.14);
+}
+
+.mist {
+  animation: fg-mist 14s ease-in-out infinite;
+}
+
+.snowGlint {
+  animation: fg-snow 5s ease-in-out infinite;
+}
+
+.scan {
+  animation: fg-scan 5.5s linear infinite;
+}
+
+.nodeA {
+  animation: fg-pulse 2.4s ease-in-out infinite;
+}
+
+.nodeB {
+  animation: fg-pulse 2.4s ease-in-out infinite;
+  animation-delay: -0.8s;
+}
+
+.nodeC {
+  animation: fg-pulse 2.4s ease-in-out infinite;
+  animation-delay: -1.6s;
+}
+
+.trace {
+  animation: fg-trace 2.8s ease-in-out infinite;
+}
+
+@keyframes fg-mist {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: translateX(0);
+  }
+  50% {
+    opacity: 0.62;
+    transform: translateX(5px);
+  }
+}
+
+@keyframes fg-snow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.82;
+  }
+}
+
+@keyframes fg-scan {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.45;
+  }
+  92% {
+    opacity: 0.38;
+  }
+  to {
+    transform: translateY(148px);
+    opacity: 0;
+  }
+}
+
+@keyframes fg-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fg-trace {
+  0%,
+  100% {
+    stroke-opacity: 0.32;
+  }
+  50% {
+    stroke-opacity: 0.82;
+  }
+}

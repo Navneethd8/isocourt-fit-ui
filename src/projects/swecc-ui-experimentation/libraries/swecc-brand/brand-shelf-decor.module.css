@@ -1,0 +1,101 @@
+.light {
+  box-shadow: inset 0 -1px 0 rgba(61, 47, 82, 0.12);
+}
+
+.dark {
+  box-shadow: inset 0 -1px 0 rgba(184, 160, 212, 0.1);
+}
+
+.star {
+  animation: sb-twinkle 3.2s ease-in-out infinite;
+}
+
+.starDelayed {
+  animation: sb-twinkle 3.2s ease-in-out infinite;
+  animation-delay: -1.1s;
+}
+
+.starDelayed2 {
+  animation: sb-twinkle 3.2s ease-in-out infinite;
+  animation-delay: -2.2s;
+}
+
+.moon {
+  animation: sb-moon 7s ease-in-out infinite;
+}
+
+.crystalA {
+  animation: sb-drift-a 9s ease-in-out infinite;
+}
+
+.crystalB {
+  animation: sb-drift-b 11s ease-in-out infinite;
+}
+
+.crystalC {
+  animation: sb-drift-c 8s ease-in-out infinite;
+}
+
+.shimmerBand {
+  animation: sb-shimmer 12s ease-in-out infinite;
+}
+
+@keyframes sb-twinkle {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes sb-moon {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes sb-drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(4px, -6px) rotate(4deg);
+  }
+}
+
+@keyframes sb-drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(-5px, -4px) rotate(-5deg);
+  }
+}
+
+@keyframes sb-drift-c {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(3px, -8px);
+  }
+}
+
+@keyframes sb-shimmer {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.65;
+  }
+}

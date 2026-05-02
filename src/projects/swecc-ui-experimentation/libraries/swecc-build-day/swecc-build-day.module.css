@@ -1,0 +1,479 @@
+/*
+ * SWECC “build day” — structural homage to winfohackathon.com (UW peer event rhythm):
+ * frosted pill controls, uppercase mono captions, track-style cards, schedule-friendly contrast.
+ * Ocean teal → SWECC logo greens (#7ea266 family). Flat colors; no site artwork copied.
+ */
+
+.themeLight {
+  --bd-bg: #dff6ea;
+  --bd-bg-accent: rgba(255, 255, 255, 0.58);
+  --bd-bg-hover: rgba(255, 255, 255, 0.78);
+  --bd-ink: #143828;
+  --bd-ink-soft: #2d5040;
+  --bd-title: #0f241c;
+  --bd-green: #4d6340;
+  --bd-green-mid: #6b8f52;
+  --bd-green-bright: #7ea266;
+  --bd-card: rgba(255, 255, 255, 0.88);
+  --bd-border: 1px solid #b5d4c4;
+  --bd-border-strong: #8fbc9f;
+  --bd-focus: #4d6340;
+  --bd-warning: #b45309;
+}
+
+.themeDark {
+  --bd-bg: #182220;
+  --bd-bg-accent: #1f2e28;
+  --bd-bg-hover: #2a3d34;
+  --bd-ink: #d8ebe4;
+  --bd-ink-soft: #9bc4af;
+  --bd-title: #e8f6ef;
+  --bd-green: #7ea266;
+  --bd-green-mid: #92c278;
+  --bd-green-bright: #a8dc88;
+  --bd-card: #1c2e26;
+  --bd-border: 1px solid #355045;
+  --bd-border-strong: #4d6b58;
+  --bd-focus: #a8dc88;
+  --bd-warning: #fbbf24;
+}
+
+.root {
+  font-family:
+    'DM Sans',
+    Montserrat,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 0.92rem;
+  color: var(--bd-ink);
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border-radius: 999px;
+  padding: 0.5em 1.25em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  border: none;
+  letter-spacing: 0.02em;
+}
+
+.button:focus-visible,
+.buttonPrimary:focus-visible,
+.buttonGhost:focus-visible {
+  outline: 2px solid var(--bd-focus);
+  outline-offset: 2px;
+}
+
+/* Secondary — frosted pill like WINFO nav capsule */
+.button {
+  background: var(--bd-bg-accent);
+  color: var(--bd-title);
+  border: var(--bd-border);
+}
+
+.button:hover {
+  background: var(--bd-bg-hover);
+}
+
+/* Primary — coral CTA becomes SWECC forest */
+.buttonPrimary {
+  background: var(--bd-green);
+  color: #f4faf6;
+}
+
+.buttonPrimary:hover {
+  background: var(--bd-green-mid);
+}
+
+.themeDark .buttonPrimary {
+  background: var(--bd-green);
+  color: #101814;
+}
+
+.themeDark .buttonPrimary:hover {
+  background: var(--bd-green-mid);
+}
+
+.buttonGhost {
+  background: transparent;
+  color: var(--bd-green);
+  border: var(--bd-border);
+}
+
+.themeDark .buttonGhost {
+  color: var(--bd-title);
+  border-color: var(--bd-border-strong);
+}
+
+.buttonGhost:hover {
+  background: var(--bd-bg-hover);
+}
+
+.card {
+  background: var(--bd-card);
+  border: var(--bd-border);
+  border-radius: 16px;
+  padding: 1rem 1.1rem 1.1rem;
+  text-align: left;
+}
+
+.trackTop {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+}
+
+.trackGlyph {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  color: var(--bd-green-bright);
+  margin-top: 0.1rem;
+}
+
+.trackHeadings {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0 0 0.15rem;
+  font-size: 1.08rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--bd-title);
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 0.74rem;
+  font-weight: 500;
+  color: var(--bd-ink-soft);
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.titleRule {
+  height: 4px;
+  margin: 0.65rem 0 0.75rem;
+  border-radius: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--bd-green-bright),
+    var(--bd-green-bright) 14px,
+    transparent 14px,
+    transparent 22px
+  );
+  opacity: 0.85;
+}
+
+.trackBody {
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.label {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bd-ink-soft);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.84rem;
+  border: var(--bd-border);
+  border-radius: 12px;
+  padding: 0.5rem 0.65rem;
+  background: var(--bd-bg);
+  color: var(--bd-ink);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--bd-green-bright);
+}
+
+.hint {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  color: var(--bd-ink-soft);
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.45rem;
+  border-radius: 6px;
+  border: var(--bd-border);
+}
+
+.badge {
+  background: var(--bd-bg-accent);
+  color: var(--bd-title);
+}
+
+.badgeAccent {
+  background: rgba(126, 162, 102, 0.18);
+  border-color: var(--bd-green-bright);
+  color: var(--bd-green);
+}
+
+.themeDark .badgeAccent {
+  background: rgba(126, 162, 102, 0.15);
+  color: var(--bd-green-bright);
+}
+
+.badgeSuccess {
+  background: rgba(126, 162, 102, 0.22);
+  border-color: var(--bd-green);
+  color: var(--bd-title);
+}
+
+.themeDark .badgeSuccess {
+  color: var(--bd-green-bright);
+}
+
+.badgeWarning {
+  background: var(--bd-bg-accent);
+  border-color: var(--bd-warning);
+  color: var(--bd-warning);
+}
+
+.segmented {
+  display: inline-flex;
+  border: var(--bd-border);
+  background: var(--bd-bg-accent);
+  border-radius: 999px;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.38rem 0.75rem;
+  border: none;
+  background: transparent;
+  color: var(--bd-ink);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.segmentedBtn:hover {
+  background: var(--bd-bg-hover);
+}
+
+.segmentedBtnActive {
+  background: var(--bd-green);
+  color: #f4faf6;
+}
+
+.themeDark .segmentedBtnActive {
+  background: var(--bd-green-mid);
+  color: #101814;
+}
+
+.segmentedBtn + .segmentedBtn,
+.segmentedBtn + .segmentedBtnActive,
+.segmentedBtnActive + .segmentedBtn,
+.segmentedBtnActive + .segmentedBtnActive {
+  border-left: var(--bd-border);
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stepper li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.stepperItem {
+  color: var(--bd-ink-soft);
+}
+
+.stepperItemCurrent {
+  color: var(--bd-title);
+}
+
+.stepperItemDone {
+  color: var(--bd-green-bright);
+}
+
+.stepperDot,
+.stepperDotCurrent,
+.stepperDotDone {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--bd-bg-accent);
+  border: var(--bd-border);
+  flex-shrink: 0;
+}
+
+.stepperDotCurrent {
+  background: var(--bd-green-bright);
+  border-color: var(--bd-title);
+}
+
+.stepperDotDone {
+  background: var(--bd-green);
+  border-color: var(--bd-green-mid);
+}
+
+.metric {
+  background: var(--bd-card);
+  border: var(--bd-border);
+  border-radius: 14px;
+  padding: 0.55rem 0.7rem;
+}
+
+.metricLabel {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: var(--bd-ink-soft);
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 1.02rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--bd-title);
+}
+
+.metricValuePositive {
+  color: var(--bd-green-bright);
+}
+
+.metricValueNegative {
+  color: var(--bd-warning);
+}
+
+.metricSub {
+  font-size: 0.68rem;
+  color: var(--bd-ink-soft);
+  margin-top: 0.08rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  padding: 0.65rem 0.75rem;
+  border-radius: 14px;
+  border: var(--bd-border);
+  color: var(--bd-ink);
+}
+
+.calloutTip {
+  background: var(--bd-bg-accent);
+  border-color: var(--bd-green-bright);
+}
+
+.calloutInfo {
+  background: var(--bd-bg);
+  border-color: var(--bd-border-strong);
+}
+
+.calloutWarning {
+  background: var(--bd-bg-accent);
+  border-color: var(--bd-warning);
+}
+
+.calloutTitle {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin: 0 0 0.3rem;
+  color: var(--bd-title);
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-size: 0.58rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--bd-ink-soft);
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 10px;
+  border: var(--bd-border);
+  background: var(--bd-bg-accent);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: var(--bd-green);
+  transition: width 0.45s ease;
+}
+
+.themeDark .progressFill {
+  background: var(--bd-green-mid);
+}

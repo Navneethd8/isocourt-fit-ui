@@ -1,0 +1,41 @@
+.light {
+  box-shadow:
+    inset 0 -1px 0 color-mix(in srgb, var(--husky-purple) 14%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--sage-green) 10%, transparent);
+}
+
+.dark {
+  box-shadow:
+    inset 0 -1px 0 color-mix(in srgb, var(--accent) 12%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--lavender) 10%, transparent);
+}
+
+.barPulse {
+  animation: fn-bar 4s ease-in-out infinite;
+}
+
+.shard {
+  animation: fn-shard 6s ease-in-out infinite;
+}
+
+@keyframes fn-bar {
+  0%,
+  100% {
+    opacity: 0.92;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes fn-shard {
+  0%,
+  100% {
+    transform: translateX(0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateX(4px);
+    opacity: 1;
+  }
+}

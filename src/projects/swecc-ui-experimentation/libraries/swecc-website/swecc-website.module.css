@@ -1,0 +1,456 @@
+/*
+ * Tokens from swecc.org bundled CSS (`:root` + `.dark-mode` in main.*.css).
+ * Classic site chrome: UW-adjacent purple text, violet CTA #6726d5, charcoal borders.
+ */
+
+.themeLight {
+  --sw-bg: #f2f0fb;
+  --sw-bg-accent: #f0f0f0;
+  --sw-bg-hover: #dcdcdc;
+  --sw-text: #656fb3;
+  --sw-text-sub: #565fb0;
+  --sw-text-title: #4a4da2;
+  --sw-text-header: #412675;
+  --sw-nav-accent: #3e2076;
+  --sw-cta: #6726d5;
+  --sw-muted-btn: #656fb3;
+  --sw-muted-btn-hover: #5f68a1;
+  --sw-card: #ffffff;
+  --sw-heading-accent: #003d82;
+  --sw-border: 1.5px solid #474a4d;
+  --sw-border-soft: #c9cad8;
+  --sw-focus: #6726d5;
+  --sw-warning: #f38f07;
+}
+
+.themeDark {
+  --sw-bg: #2c2d2e;
+  --sw-bg-accent: #484a4d;
+  --sw-bg-hover: #343435;
+  --sw-text: #d5cedc;
+  --sw-text-sub: #beb8eb;
+  --sw-text-title: #d5c6f8;
+  --sw-text-header: #ffeaee;
+  --sw-nav-accent: #a277f4;
+  --sw-cta: #a277f4;
+  --sw-muted-btn: #8b7ec8;
+  --sw-muted-btn-hover: #9887d4;
+  --sw-card: #484a4d;
+  --sw-heading-accent: #8eb4e3;
+  --sw-border: 1px solid #474a4d;
+  --sw-border-soft: #5a5c5f;
+  --sw-focus: #d5c6f8;
+  --sw-warning: #f38f07;
+}
+
+.root {
+  font-family:
+    Roboto,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 0.92rem;
+  color: var(--sw-text);
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  border-radius: 30px;
+  padding: 0.45em 1em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition:
+    opacity 0.3s ease,
+    background-color 0.3s ease,
+    border-color 0.2s ease;
+  border: none;
+}
+
+.button:focus-visible,
+.buttonPrimary:focus-visible,
+.buttonGhost:focus-visible {
+  outline: 2px solid var(--sw-focus);
+  outline-offset: 2px;
+}
+
+.button {
+  background: var(--sw-bg-accent);
+  color: var(--sw-text-title);
+  border: var(--sw-border);
+}
+
+.button:hover {
+  background: var(--sw-bg-hover);
+}
+
+.buttonPrimary {
+  background: var(--sw-cta);
+  color: #fff;
+  font-weight: 300;
+  font-size: 0.9rem;
+}
+
+.themeDark .buttonPrimary {
+  font-weight: 500;
+}
+
+.buttonPrimary:hover {
+  opacity: 0.85;
+}
+
+.buttonGhost {
+  background: transparent;
+  color: var(--sw-nav-accent);
+  border: var(--sw-border);
+}
+
+.themeDark .buttonGhost {
+  color: var(--sw-text-sub);
+  border-color: var(--sw-border-soft);
+}
+
+.buttonGhost:hover {
+  background: var(--sw-bg-hover);
+}
+
+/* Default homepage-style card — bordered panel, not the logo kit’s rail layout. */
+.card {
+  background: var(--sw-card);
+  border: var(--sw-border);
+  border-radius: 8px;
+  padding: 0.85rem 1rem 1rem;
+  text-align: left;
+}
+
+.title {
+  margin: 0 0 0.2rem;
+  font-family: Montserrat, Roboto, ui-sans-serif, system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--sw-text-title);
+}
+
+.subtitle {
+  margin: 0 0 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--sw-text-sub);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--sw-text-title);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.84rem;
+  border: var(--sw-border);
+  border-radius: 8px;
+  padding: 0.45rem 0.6rem;
+  background: var(--sw-bg);
+  color: var(--sw-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--sw-cta);
+}
+
+.hint {
+  font-size: 0.68rem;
+  color: var(--sw-text-sub);
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.12rem 0.4rem;
+  border-radius: 5px;
+  border: var(--sw-border);
+}
+
+.badge {
+  background: var(--sw-bg-accent);
+  color: var(--sw-text-title);
+}
+
+.badgeAccent {
+  background: rgba(103, 38, 213, 0.12);
+  border-color: rgba(62, 32, 118, 0.45);
+  color: var(--sw-nav-accent);
+}
+
+.themeDark .badgeAccent {
+  background: rgba(162, 119, 244, 0.15);
+  border-color: rgba(162, 119, 244, 0.45);
+  color: var(--sw-text-title);
+}
+
+.badgeSuccess {
+  background: rgba(60, 140, 45, 0.15);
+  border-color: #3c8c2d;
+  color: #2d6a22;
+}
+
+.themeDark .badgeSuccess {
+  color: #b8e6ae;
+  border-color: #5cb84a;
+}
+
+.badgeWarning {
+  background: rgba(243, 143, 7, 0.15);
+  border-color: var(--sw-warning);
+  color: #a65f06;
+}
+
+.themeDark .badgeWarning {
+  color: #ffc266;
+}
+
+.segmented {
+  display: inline-flex;
+  border: var(--sw-border);
+  background: var(--sw-bg-accent);
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 500;
+  padding: 0.35rem 0.65rem;
+  border: none;
+  background: transparent;
+  color: var(--sw-text);
+  cursor: pointer;
+  transition: background 0.25s ease;
+}
+
+.segmentedBtn:hover {
+  background: var(--sw-bg-hover);
+}
+
+.segmentedBtnActive {
+  background: var(--sw-muted-btn);
+  color: #fff;
+}
+
+.themeDark .segmentedBtnActive {
+  background: var(--sw-nav-accent);
+  color: var(--sw-text-header);
+}
+
+.segmentedBtn + .segmentedBtn,
+.segmentedBtn + .segmentedBtnActive,
+.segmentedBtnActive + .segmentedBtn,
+.segmentedBtnActive + .segmentedBtnActive {
+  border-left: var(--sw-border);
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  align-items: center;
+}
+
+.stepper li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.stepperItem {
+  color: var(--sw-text);
+  opacity: 0.88;
+}
+
+.stepperItemCurrent {
+  color: var(--sw-text-title);
+}
+
+.stepperItemDone {
+  color: var(--sw-nav-accent);
+  opacity: 0.95;
+}
+
+.stepperDot,
+.stepperDotCurrent,
+.stepperDotDone {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--sw-bg-accent);
+  border: var(--sw-border);
+  flex-shrink: 0;
+}
+
+.stepperDotCurrent {
+  background: var(--sw-cta);
+  border-color: var(--sw-text-header);
+}
+
+.stepperDotDone {
+  background: var(--sw-muted-btn);
+  border-color: var(--sw-text-sub);
+}
+
+.metric {
+  background: var(--sw-card);
+  border: var(--sw-border);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+}
+
+.metricLabel {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--sw-text-sub);
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--sw-text-title);
+}
+
+.metricValuePositive {
+  color: #3c8c2d;
+}
+
+.themeDark .metricValuePositive {
+  color: #9fdf8f;
+}
+
+.metricValueNegative {
+  color: #b45309;
+}
+
+.themeDark .metricValueNegative {
+  color: #fb923c;
+}
+
+.metricSub {
+  font-size: 0.68rem;
+  color: var(--sw-text);
+  margin-top: 0.08rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  padding: 0.55rem 0.65rem;
+  border: var(--sw-border);
+  border-radius: 8px;
+  background: var(--sw-bg-accent);
+  color: var(--sw-text);
+}
+
+.calloutTip {
+  border-color: rgba(103, 38, 213, 0.45);
+  background: rgba(103, 38, 213, 0.06);
+}
+
+.themeDark .calloutTip {
+  border-color: rgba(162, 119, 244, 0.45);
+  background: rgba(162, 119, 244, 0.08);
+}
+
+.calloutInfo {
+  border-color: rgba(0, 61, 130, 0.35);
+  background: rgba(0, 61, 130, 0.05);
+}
+
+.themeDark .calloutInfo {
+  border-color: rgba(142, 180, 227, 0.45);
+  background: rgba(142, 180, 227, 0.08);
+}
+
+.calloutWarning {
+  border-color: rgba(243, 143, 7, 0.55);
+  background: rgba(243, 143, 7, 0.08);
+}
+
+.calloutTitle {
+  font-family: Montserrat, Roboto, ui-sans-serif, system-ui, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--sw-text-title);
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--sw-text-sub);
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 10px;
+  border: var(--sw-border);
+  background: var(--sw-bg-accent);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: var(--sw-muted-btn);
+  transition: width 0.45s ease;
+}
+
+.themeDark .progressFill {
+  background: var(--sw-nav-accent);
+}

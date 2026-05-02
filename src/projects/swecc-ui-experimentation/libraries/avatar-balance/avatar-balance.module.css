@@ -1,0 +1,468 @@
+/*
+ * Avatar-inspired harmony theme (original fan homage — not official assets).
+ * Purple spirit energy × jade earth — parchment light, spirit-realm dark. Flat colors only.
+ */
+
+.themeLight {
+  --ab-bg: #ebe3d6;
+  --ab-bg-accent: #ddd4c4;
+  --ab-bg-hover: #d0c6b4;
+  --ab-text: #3d3548;
+  --ab-text-sub: #5c5347;
+  --ab-text-title: #4a3f6b;
+  --ab-purple: #6b5094;
+  --ab-purple-soft: #dcd2ee;
+  --ab-green: #3f7d62;
+  --ab-green-bright: #4f9d73;
+  --ab-green-soft: #c5e5d4;
+  --ab-primary: #3f7d62;
+  --ab-primary-hover: #356b54;
+  --ab-card: #faf6ee;
+  --ab-card-edge: #6b5094;
+  --ab-card-foot: #3f7d62;
+  --ab-muted: #8a7f6e;
+  --ab-border: 1px solid #c9b896;
+  --ab-border-soft: #d8cbb5;
+  --ab-focus: #6b5094;
+  --ab-warning: #c17f3a;
+}
+
+.themeDark {
+  --ab-bg: #14101c;
+  --ab-bg-accent: #1e1a2c;
+  --ab-bg-hover: #282238;
+  --ab-text: #e8e4f4;
+  --ab-text-sub: #a89cc4;
+  --ab-text-title: #d4c4f8;
+  --ab-purple: #b89cff;
+  --ab-purple-soft: #3d2f55;
+  --ab-green: #5dbe8a;
+  --ab-green-bright: #7ae8b5;
+  --ab-green-soft: #1f3d32;
+  --ab-primary: #5dbe8a;
+  --ab-primary-hover: #7ae8b5;
+  --ab-card: #1a1528;
+  --ab-card-edge: #b89cff;
+  --ab-card-foot: #5dbe8a;
+  --ab-muted: #9a8fb8;
+  --ab-border: 1px solid #4a3d6b;
+  --ab-border-soft: #5c4d78;
+  --ab-focus: #d4c4f8;
+  --ab-warning: #e8a65c;
+}
+
+.root {
+  font-family:
+    Montserrat,
+    Roboto,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 0.92rem;
+  color: var(--ab-text);
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost {
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  border-radius: 999px;
+  padding: 0.45em 1.15em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  border: none;
+}
+
+.button:focus-visible,
+.buttonPrimary:focus-visible,
+.buttonGhost:focus-visible {
+  outline: 2px solid var(--ab-focus);
+  outline-offset: 2px;
+}
+
+.button {
+  background: var(--ab-bg-accent);
+  color: var(--ab-text-title);
+  border: var(--ab-border);
+}
+
+.button:hover {
+  background: var(--ab-bg-hover);
+}
+
+/* Jade action — earth bending calm */
+.buttonPrimary {
+  background: var(--ab-primary);
+  color: #fff;
+}
+
+.themeDark .buttonPrimary {
+  color: #0f1412;
+}
+
+.buttonPrimary:hover {
+  background: var(--ab-primary-hover);
+}
+
+.buttonGhost {
+  background: transparent;
+  color: var(--ab-purple);
+  border: var(--ab-border);
+}
+
+.themeDark .buttonGhost {
+  color: var(--ab-text-title);
+  border-color: var(--ab-border-soft);
+}
+
+.buttonGhost:hover {
+  background: var(--ab-bg-hover);
+}
+
+/* Violet spine + jade sill — scroll / temple slab */
+.card {
+  position: relative;
+  background: var(--ab-card);
+  border: var(--ab-border);
+  border-radius: 14px;
+  border-left: 5px solid var(--ab-card-edge);
+  border-bottom: 4px solid var(--ab-card-foot);
+  padding: 0.75rem 1rem 0.95rem;
+  text-align: left;
+}
+
+.cardEyebrow {
+  margin: 0 0 0.25rem;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ab-muted);
+}
+
+.title {
+  margin: 0 0 0.15rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ab-text-title);
+}
+
+.subtitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--ab-text-sub);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ab-text-title);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.84rem;
+  border: var(--ab-border);
+  border-radius: 10px;
+  padding: 0.45rem 0.65rem;
+  background: var(--ab-bg);
+  color: var(--ab-text);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--ab-purple);
+  outline: 2px solid var(--ab-green-bright);
+  outline-offset: 0;
+}
+
+.themeDark .input:focus {
+  outline-color: var(--ab-purple);
+}
+
+.hint {
+  font-size: 0.68rem;
+  color: var(--ab-text-sub);
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.14rem 0.45rem;
+  border-radius: 999px;
+  border: var(--ab-border);
+}
+
+.badge {
+  background: var(--ab-bg-accent);
+  color: var(--ab-text-title);
+}
+
+.badgeAccent {
+  background: var(--ab-purple-soft);
+  border-color: var(--ab-purple);
+  color: var(--ab-text-title);
+}
+
+.themeDark .badgeAccent {
+  background: var(--ab-purple-soft);
+  border-color: var(--ab-purple);
+  color: var(--ab-text-title);
+}
+
+.badgeSuccess {
+  background: var(--ab-green-soft);
+  border-color: var(--ab-green);
+  color: var(--ab-text-title);
+}
+
+.themeDark .badgeSuccess {
+  color: var(--ab-green-bright);
+}
+
+.badgeWarning {
+  background: var(--ab-bg-accent);
+  border-color: var(--ab-warning);
+  color: var(--ab-warning);
+}
+
+.segmented {
+  display: inline-flex;
+  border: var(--ab-border);
+  background: var(--ab-bg-accent);
+  border-radius: 999px;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 600;
+  padding: 0.35rem 0.7rem;
+  border: none;
+  background: transparent;
+  color: var(--ab-text);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.segmentedBtn:hover {
+  background: var(--ab-bg-hover);
+}
+
+.segmentedBtnActive {
+  background: var(--ab-purple);
+  color: #fff;
+}
+
+.themeDark .segmentedBtnActive {
+  background: var(--ab-purple);
+  color: #14101c;
+}
+
+.segmentedBtn + .segmentedBtn,
+.segmentedBtn + .segmentedBtnActive,
+.segmentedBtnActive + .segmentedBtn,
+.segmentedBtnActive + .segmentedBtnActive {
+  border-left: var(--ab-border);
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  align-items: center;
+}
+
+.stepper li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.stepperItem {
+  color: var(--ab-text);
+  opacity: 0.88;
+}
+
+.stepperItemCurrent {
+  color: var(--ab-text-title);
+}
+
+.stepperItemDone {
+  color: var(--ab-green);
+  opacity: 0.95;
+}
+
+.stepperDot,
+.stepperDotCurrent,
+.stepperDotDone {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--ab-bg-accent);
+  border: var(--ab-border);
+  flex-shrink: 0;
+}
+
+.stepperDotCurrent {
+  background: var(--ab-purple);
+  border-color: var(--ab-text-title);
+}
+
+.themeDark .stepperDotCurrent {
+  background: var(--ab-purple);
+  border-color: var(--ab-green-bright);
+}
+
+.stepperDotDone {
+  background: var(--ab-green);
+  border-color: var(--ab-green-bright);
+}
+
+.themeDark .stepperDotDone {
+  background: var(--ab-green-soft);
+  border-color: var(--ab-green);
+}
+
+.metric {
+  background: var(--ab-card);
+  border: var(--ab-border);
+  border-radius: 12px;
+  padding: 0.55rem 0.65rem;
+}
+
+.metricLabel {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--ab-text-sub);
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--ab-text-title);
+}
+
+.metricValuePositive {
+  color: var(--ab-green);
+}
+
+.metricValueNegative {
+  color: var(--ab-warning);
+}
+
+.metricSub {
+  font-size: 0.68rem;
+  color: var(--ab-text);
+  margin-top: 0.08rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  padding: 0.55rem 0.65rem;
+  border-radius: 12px;
+  border: var(--ab-border);
+  color: var(--ab-text);
+}
+
+.calloutTip {
+  background: var(--ab-purple-soft);
+  border-color: var(--ab-purple);
+}
+
+.calloutInfo {
+  background: var(--ab-green-soft);
+  border-color: var(--ab-green);
+}
+
+.themeDark .calloutInfo {
+  background: var(--ab-green-soft);
+  color: var(--ab-text);
+}
+
+.calloutWarning {
+  background: var(--ab-bg-accent);
+  border-color: var(--ab-warning);
+}
+
+.calloutTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--ab-text-title);
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ab-text-sub);
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 9px;
+  border: var(--ab-border);
+  background: var(--ab-bg-accent);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: var(--ab-green);
+  transition: width 0.45s ease;
+}
+
+.themeDark .progressFill {
+  background: var(--ab-green);
+}

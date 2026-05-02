@@ -1,0 +1,82 @@
+.light {
+  box-shadow: inset 0 -1px 0 rgba(91, 33, 182, 0.12);
+}
+
+.dark {
+  box-shadow: inset 0 -1px 0 rgba(167, 139, 250, 0.15);
+}
+
+.scan {
+  animation: pm-scan 5.5s linear infinite;
+}
+
+.nodeA {
+  animation: pm-pulse 2.4s ease-in-out infinite;
+}
+
+.nodeB {
+  animation: pm-pulse 2.4s ease-in-out infinite;
+  animation-delay: -0.8s;
+}
+
+.nodeC {
+  animation: pm-pulse 2.4s ease-in-out infinite;
+  animation-delay: -1.6s;
+}
+
+.beacon {
+  animation: pm-beacon 3s ease-in-out infinite;
+}
+
+.trace {
+  animation: pm-trace 2.8s ease-in-out infinite;
+}
+
+@keyframes pm-scan {
+  from {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.55;
+  }
+  92% {
+    opacity: 0.45;
+  }
+  to {
+    transform: translateY(148px);
+    opacity: 0;
+  }
+}
+
+@keyframes pm-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes pm-beacon {
+  0%,
+  100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 4px rgba(126, 162, 102, 0.9));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(167, 139, 250, 0.95));
+  }
+}
+
+@keyframes pm-trace {
+  0%,
+  100% {
+    stroke-opacity: 0.35;
+  }
+  50% {
+    stroke-opacity: 0.85;
+  }
+}

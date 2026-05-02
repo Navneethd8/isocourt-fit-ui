@@ -1,0 +1,521 @@
+/*
+ * SWECC Finale — semantic tokens aligned with site rebrand (:root / dark).
+ * Typography: IBM Plex Sans (300/400/500) + IBM Plex Serif (700/900). Fonts in index.html.
+ * Palette literals live ONLY in .panelLight / .panelDark; primitives inherit from the pane shell.
+ *
+ * Semantic: --bg, --surface, --surface-2, --text-primary, --text-secondary, --text-muted, --border
+ * Brand: --sage-green (primary), --husky-purple / --lavender (identity chips),
+ *        --accent + --accent-rgb (links / focus / highlights),
+ *        --green-accent (success), --pink (destructive), --bright-snow (on-sage text)
+ */
+
+.panelLight {
+  --husky-purple: #c5b4e3;
+  --sage-green: #7a9a4a;
+  --charcoal: #555a5f;
+  --bright-snow: #f5f5f7;
+  --graphite: #2a2d32;
+  --neutral-50: #fafafa;
+  --neutral-100: #f0f0f0;
+  --neutral-200: #e0e0e4;
+  --neutral-400: #a8aab0;
+  --neutral-600: #5c5f66;
+  --neutral-800: #222326;
+
+  --bg: #f5f5f7;
+  --surface: #ffffff;
+  --surface-2: #f0f0f0;
+  --text-primary: #2a2d32;
+  --text-secondary: #555a5f;
+  --text-muted: #a8aab0;
+  --border: #e0e0e4;
+  --nav-bg: rgba(245, 245, 247, 0.88);
+  --card-bg: #f5f5f7;
+  --card-hover: #fafafa;
+  --accent: #3d007a;
+  --accent-rgb: 61, 0, 122;
+
+  --green-accent: #aadb1e;
+  --pink: #e93cac;
+  --lavender: var(--husky-purple);
+  --spirit-purple: #4b2e83;
+
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.panelDark {
+  --husky-purple: #c5b4e3;
+  --sage-green: #7a9a4a;
+  --charcoal: #555a5f;
+  --bright-snow: #f5f5f7;
+  --graphite: #2a2d32;
+  --neutral-50: #fafafa;
+  --neutral-100: #f0f0f0;
+  --neutral-200: #e0e0e4;
+  --neutral-400: #a8aab0;
+  --neutral-600: #5c5f66;
+  --neutral-800: #222326;
+
+  --bg: #111214;
+  --surface: #1a1c1f;
+  --surface-2: #222428;
+  --text-primary: #f5f5f7;
+  --text-secondary: #9a9da5;
+  --text-muted: #5c5f66;
+  --border: #2e3035;
+  --nav-bg: rgba(17, 18, 20, 0.88);
+  --card-bg: #1a1c1f;
+  --card-hover: #222428;
+  --accent: #c5b4e3;
+  --accent-rgb: 197, 180, 227;
+
+  --green-accent: #aadb1e;
+  --pink: #e93cac;
+  --lavender: var(--husky-purple);
+  --spirit-purple: #4b2e83;
+
+  border: 1px solid var(--border);
+  background: var(--bg);
+}
+
+.root {
+  font-family:
+    'IBM Plex Sans',
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--text-primary);
+}
+
+.root :global(a) {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+.root :global(a:hover) {
+  text-decoration: underline;
+  opacity: 0.88;
+}
+
+.button,
+.buttonPrimary,
+.buttonGhost,
+.buttonDestructive {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  border-radius: 6px;
+  padding: 0.45em 1em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+  border: none;
+}
+
+.button:focus-visible,
+.buttonPrimary:focus-visible,
+.buttonGhost:focus-visible,
+.buttonDestructive:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Secondary — surface + border */
+.button {
+  background: var(--surface);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+}
+
+.button:hover {
+  background: var(--surface-2);
+}
+
+/* Primary — sage + chamfered corners (rebrand CTA) */
+.buttonPrimary {
+  background: var(--sage-green);
+  color: var(--bright-snow);
+  font-weight: 500;
+  border: none;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 10px) 0,
+    100% 10px,
+    100% 100%,
+    10px 100%,
+    0 calc(100% - 10px)
+  );
+}
+
+.buttonPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(122, 154, 74, 0.4);
+}
+
+/* Ghost */
+.buttonGhost {
+  background: transparent;
+  color: var(--text-primary);
+  border: none;
+}
+
+.buttonGhost:hover {
+  background: var(--surface-2);
+}
+
+/* Destructive */
+.buttonDestructive {
+  background: var(--pink);
+  color: var(--bright-snow);
+  font-weight: 600;
+  border: none;
+}
+
+.buttonDestructive:hover {
+  opacity: 0.92;
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: 0 10px 10px 0;
+  background: var(--surface);
+  text-align: left;
+  overflow: hidden;
+}
+
+.cardRail {
+  width: 6px;
+  flex-shrink: 0;
+  background: var(--sage-green);
+}
+
+.cardMain {
+  flex: 1;
+  min-width: 0;
+  padding: 0.65rem 0.95rem 0.85rem;
+}
+
+/* Eyebrow — sage rail line (matches hero eyebrow in rebrand) */
+.cardEyebrow {
+  margin: 0 0 0.2rem;
+  font-family:
+    'IBM Plex Sans',
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage-green);
+}
+
+.title {
+  margin: 0 0 0.15rem;
+  font-family: 'IBM Plex Serif', Georgia, 'Times New Roman', serif;
+  font-size: 1.14rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.subtitle {
+  margin: 0 0 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  text-align: left;
+}
+
+.label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.input {
+  font-family: inherit;
+  font-size: 0.84rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  background: var(--surface-2);
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input:focus {
+  border-color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 0;
+}
+
+.hint {
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+.badge,
+.badgeAccent,
+.badgeSuccess,
+.badgeWarning {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.62rem;
+  font-weight: 600;
+  padding: 0.12rem 0.4rem;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+.badge {
+  background: var(--card-bg);
+  color: var(--text-primary);
+}
+
+/* Accent chip — lavender border/fill */
+.badgeAccent {
+  background: color-mix(in srgb, var(--lavender) 16%, var(--surface-2));
+  border-color: var(--lavender);
+  color: var(--text-primary);
+}
+
+.panelDark .badgeAccent {
+  background: color-mix(in srgb, var(--lavender) 14%, var(--surface-2));
+  color: var(--lavender);
+}
+
+.badgeSuccess {
+  background: var(--surface-2);
+  border-color: var(--green-accent);
+  color: var(--green-accent);
+}
+
+.badgeWarning {
+  background: var(--surface-2);
+  border-color: var(--pink);
+  color: var(--pink);
+}
+
+.segmented {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 0;
+  gap: 0;
+}
+
+.segmentedBtn,
+.segmentedBtnActive {
+  font-family: inherit;
+  font-size: 0.74rem;
+  font-weight: 500;
+  padding: 0.35rem 0.65rem;
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.segmentedBtn:hover {
+  background: var(--surface);
+}
+
+.segmentedBtnActive {
+  background: var(--sage-green);
+  color: var(--bright-snow);
+}
+
+.segmentedBtn + .segmentedBtn,
+.segmentedBtn + .segmentedBtnActive,
+.segmentedBtnActive + .segmentedBtn,
+.segmentedBtnActive + .segmentedBtnActive {
+  border-left: 1px solid var(--border);
+}
+
+.stepper {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.65rem;
+  align-items: center;
+}
+
+.stepper li {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+}
+
+.stepperItem {
+  color: var(--text-primary);
+  opacity: 0.88;
+}
+
+.stepperItemCurrent {
+  color: var(--text-primary);
+}
+
+.stepperItemDone {
+  color: var(--accent);
+  opacity: 0.95;
+}
+
+.stepperDot,
+.stepperDotCurrent,
+.stepperDotDone {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.stepperDotCurrent {
+  background: var(--sage-green);
+  border-color: var(--text-primary);
+}
+
+.stepperDotDone {
+  background: var(--text-muted);
+  border-color: var(--border);
+}
+
+.metric {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.55rem 0.65rem;
+}
+
+.metricLabel {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.metricValue,
+.metricValuePositive,
+.metricValueNegative {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-primary);
+}
+
+.metricValuePositive {
+  color: var(--green-accent);
+}
+
+.metricValueNegative {
+  color: var(--pink);
+}
+
+.metricSub {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  margin-top: 0.08rem;
+}
+
+.callout,
+.calloutTip,
+.calloutInfo,
+.calloutWarning {
+  font-size: 0.78rem;
+  line-height: 1.55;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-2);
+  color: var(--text-primary);
+}
+
+.calloutTip {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+.calloutInfo {
+  border-color: var(--border);
+  background: var(--surface-2);
+}
+
+.calloutWarning {
+  border-color: var(--pink);
+  background: var(--surface);
+}
+
+.calloutTitle {
+  font-family: 'IBM Plex Serif', Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+  color: var(--text-primary);
+}
+
+.progress {
+  width: 100%;
+}
+
+.progressLabel {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  margin-bottom: 0.35rem;
+}
+
+.progressTrack {
+  height: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  width: 0;
+  background: var(--sage-green);
+  transition: width 0.45s ease;
+}

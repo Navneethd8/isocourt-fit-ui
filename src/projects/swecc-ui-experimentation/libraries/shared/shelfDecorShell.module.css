@@ -1,0 +1,17 @@
+/**
+ * Full-bleed mini hero inside demo panels using Tailwind `p-5`.
+ */
+.wrap {
+  margin: -1.25rem -1.25rem 0.35rem -1.25rem;
+  border-radius: 14px 14px 10px 10px;
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}

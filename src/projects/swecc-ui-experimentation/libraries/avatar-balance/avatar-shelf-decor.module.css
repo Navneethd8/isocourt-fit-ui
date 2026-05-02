@@ -1,0 +1,68 @@
+.light {
+  box-shadow: inset 0 -1px 0 rgba(107, 80, 148, 0.12);
+}
+
+.dark {
+  box-shadow: inset 0 -1px 0 rgba(184, 156, 255, 0.1);
+}
+
+.ribbon {
+  animation: ab-ribbon 10s ease-in-out infinite;
+}
+
+.orbit {
+  animation: ab-orbit 22s linear infinite;
+  transform-origin: 0 0;
+}
+
+.mountain {
+  animation: ab-mountain 8s ease-in-out infinite;
+}
+
+.spark {
+  animation: ab-spark 4s ease-in-out infinite;
+}
+
+.sparkB {
+  animation: ab-spark 4s ease-in-out infinite;
+  animation-delay: -1.3s;
+}
+
+@keyframes ab-ribbon {
+  0%,
+  100% {
+    opacity: 0.85;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes ab-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes ab-mountain {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+@keyframes ab-spark {
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
