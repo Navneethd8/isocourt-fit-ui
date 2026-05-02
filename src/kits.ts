@@ -1,4 +1,5 @@
 import { ISOCOURT_PROJECT_SLUG, getKitsForIsocourtProject } from './projects/isocourt'
+import { getKitsForSweccUiExperimentationProject, SWECC_UI_EXPERIMENTATION_PROJECT_SLUG } from './projects/swecc-ui-experimentation'
 import { getKitsForUiExperimentsProject, UI_EXPERIMENTS_PROJECT_SLUG } from './projects/ui-experiments'
 import { DEFAULT_PROJECT_SLUG } from './projects/registry'
 import type { UiKit } from './kitModel'
@@ -6,6 +7,7 @@ import type { UiKit } from './kitModel'
 export type { UiKit } from './kitModel'
 
 const KIT_RESOLVERS: Record<string, () => UiKit[]> = {
+  [SWECC_UI_EXPERIMENTATION_PROJECT_SLUG]: getKitsForSweccUiExperimentationProject,
   [UI_EXPERIMENTS_PROJECT_SLUG]: getKitsForUiExperimentsProject,
   [ISOCOURT_PROJECT_SLUG]: getKitsForIsocourtProject,
 }

@@ -29,4 +29,6 @@ export type UiKit = {
   Metric: ComponentType<LibraryMetricProps>
   Callout: ComponentType<LibraryCalloutProps>
   ProgressBar: ComponentType<LibraryProgressBarProps>
+  /** Illustrative chrome at the top of the demo column (shelf / analyze / live). */
+  ShelfDecor?: ComponentType | undefined
 }
