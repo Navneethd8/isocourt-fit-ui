@@ -10,7 +10,6 @@ import './projects/isocourt/styles/surface.css'
 import './brand/kit-fonts.css'
 import './projects/isocourt/styles/kit-override.css'
 import './styles/shadcn-tokens.css'
-import './styles/kit-shadcn-scope.css'
 import './index.css'
 import App from './App.tsx'
 
